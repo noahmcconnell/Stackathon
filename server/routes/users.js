@@ -2,7 +2,9 @@ const router = require('express').Router();
 const Collection = require('../models/user');
 
 router.get('/', (req, res, next) =>
-  Collection.find({})
+  Collection.find({
+    userId: req.params.userId
+  })
     .then(items => res.send(items))
     .catch(next)
 );
