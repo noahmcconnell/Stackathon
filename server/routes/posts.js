@@ -22,7 +22,7 @@ router.post('/', (req, res, next) =>
     .catch(next)
 );
 
-router.put('/:id', (req, res, next) => 
+router.post('/:id', (req, res, next) => 
   Vote.findByIdAndUpdate(req.params.direction)
     .then(item => res.send(item))
     .catch(next)
