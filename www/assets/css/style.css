@@ -1,6 +1,6 @@
 :root {
   --theme-color: hsl(207, 90%, 54%);
-  --theme-vivid: hsl(201, 90%, 60%);
+  --theme-vivid: hsl(201, 90%, 40%);
 }
 
 body {
@@ -13,6 +13,9 @@ body {
 .page-header .input-field {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+.input-field.white {
+  background-color: transparent !important;
 }
 .input-field.white input {
   color: #fafafa;
@@ -30,7 +33,7 @@ body {
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important;
 }
-.page-heaader .input-field input + label.active {
+.page-header .input-field input + label.active {
   transform: translateY(-5px) scale(0.8) !important;
 }
 
@@ -39,16 +42,16 @@ body {
   border-bottom-color: var(--theme-color) !important;
 }
 .input-field.theme input + label {
-  color: #fafafa;
+  color: var(--theme-color);
 }
 .input-field.theme input:focus + label {
-  color: theme !important;
+  color: var(--theme-vivid) !important;
 }
 /* label underline focus color */
 .input-field.theme input:focus {
-  color: theme;
-  border-bottom: 1px solid theme !important;
-  box-shadow: 0 1px 0 0 theme !important;
+  color: var(--theme-vivid);
+  border-bottom: 1px solid var(--theme-vivid) !important;
+  box-shadow: 0 1px 0 0 var(--theme-vivid) !important;
 }
 
 .search-bar {
@@ -184,4 +187,10 @@ body {
 
 .row {
   margin: unset !important;
+}
+
+.create-post {
+  width: 75%;
+  max-width: 45rem;
+  padding: 2rem;
 }
