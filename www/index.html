@@ -26,7 +26,8 @@
             transform="rotate(0 72.10499846935272 21.255000114440918)"></path>
         </svg>
       </div>
-      <form>
+      <form onsubmit='app.controllers.fill.meIn(event)'>
+        <!-- onsubmit needs a controller method -->
         <div class="search-bar">
           <div class="input-field">
             <input id="search" type="text">
