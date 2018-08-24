@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Collection = require('../models/post');
-const Vote = require('../models/votes');
+const Vote = require('../models/vote');
 
 router.get('/', (req, res, next) =>
   Collection.find({

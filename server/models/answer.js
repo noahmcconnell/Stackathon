@@ -13,7 +13,7 @@ let schema = new Schema({
         require: true
     },
     timestamp: {
-        type: ObjectId,
+        type: String,
         require: true
     },
     postId: {
