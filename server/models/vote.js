@@ -10,10 +10,13 @@ let schema = new Schema({
     },
     post: {
         type: ObjectId,
-        required: true
+        required: true,
+        
+
     },
     direction: {
         type: 0,
         required: true
     }
 })
+module.exports = mongoose.model(schemaName,schema)

@@ -8,4 +8,4 @@ export default class Answer {
       this.categoryId = data.categoryId
       this.correctAnswerId = data.correctAnswerId
     }
-  }
+}

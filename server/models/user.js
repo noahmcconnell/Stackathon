@@ -5,11 +5,12 @@ let schemaName = 'User'
 let schema = new Schema({
     username: {
         type: String,
-        require: true
+        required: true
     },
     password: {
         type: String,
-        require: true
+        required: true
     }
     
 })
+module.exports = mongoose.model(schemaName,schema)

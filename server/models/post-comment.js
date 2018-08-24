@@ -6,18 +6,25 @@ let schemaName = 'Post Comment'
 let schema = new Schema({
     content: {
         type: String,
-        require: true
+        required: true
     },
     userId: {
         type: ObjectId,
-        require: true
+        required: true,
+        ref:"User"
+
     },
     timestamp: {
-        type: String,
-        require: true
+        type: Date,
+        required: true
     },
     postId: {
         type: ObjectId,
-        require: true
+        required: true,
+        ref: "Post"
+
     }
 })
+module.exports = mongoose.model(schemaName,schema)
+
+

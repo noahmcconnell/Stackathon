@@ -4,20 +4,20 @@ const { Schema } = mongoose;
 const schema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     content: {
         type: String,
-        require: true
+        required: true
     },
     userId: {
         type: Schema.Types.ObjectId,
-        require: true,
+        required: true,
         ref:"User"
     },
     timestamp: {
         type: Date,
-        require: true
+        required: true
     },
     categoryId: {
         type: Schema.Types.ObjectId,

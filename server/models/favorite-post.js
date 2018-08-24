@@ -6,10 +6,13 @@ let schemaName = 'Favorite Post'
 let schema = new Schema({
     userId: {
         type: ObjectId,
-        require: true
+        required: true,
+        ref:"User"
     },
     postId: {
         type: ObjectId,
-        require: true
+        required: true,
+        ref:'Post'
     }
 })
+module.exports = mongoose.model(schemaName,schema)

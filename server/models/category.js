@@ -5,6 +5,7 @@ let schemaName = 'Post'
 let schema = new Schema({
     name: {
         type: String,
-        require: true
+        required: true
     }
 })
+module.exports = mongoose.model(schemaName,schema)
