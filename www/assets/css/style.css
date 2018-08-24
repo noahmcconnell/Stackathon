@@ -133,6 +133,18 @@ body {
   color: white;
 }
 
+.btn-theme {
+  background-color: var(--theme-color);
+  transition: all 0.2s;
+}
+.btn-theme:hover {
+  background-color: var(--theme-color);
+  filter: brightness(90%);
+}
+.btn-theme:focus {
+  background-color: var(--theme-color);
+}
+
 .flex {
   display: flex;
 }
