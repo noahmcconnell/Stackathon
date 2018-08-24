@@ -1,24 +1,15 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
-let schemaName = 'Post'
+let schemaName = 'User'
 
 let schema = new Schema({
-    title: {
+    username: {
         type: String,
         require: true
     },
-    content: {
+    password: {
         type: String,
         require: true
-    },
-    userId: {
-        type: ObjectId,
-        require: true
-    },
-    timestamp: {
-        type: ObjectId,
-        require: true
-    },
-    correctAnswerId: null
+    }
 })
