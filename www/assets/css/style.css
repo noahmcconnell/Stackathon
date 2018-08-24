@@ -1,0 +1,28 @@
+:root {
+  --theme-color: #78cffd;
+}
+
+.input-field input:focus + label {
+  color: var(--theme-color) !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+  border-bottom: 1px solid var(--theme-color) !important;
+  box-shadow: 0 1px 0 0 var(--theme-color) !important;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+.icon {
+  display: flex;
+  height: 5rem;
+}
+.icon > .icon-star {
+  width: 2rem;
+}
+.icon > .icon-name {
+  width: 7rem;
+  margin-left: 0.5rem;
+}
