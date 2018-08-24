@@ -4,4 +4,4 @@ export default class Answer {
       this.username = data.username
       this.password = data.password
     }
-  }
+}
