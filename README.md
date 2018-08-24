@@ -1,1 +1,1 @@
-"# Stackathon" 
+# Stackathon
