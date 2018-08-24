@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Collection = require('../models/post');
+const Vote = require('../models/votes');
 
 router.get('/', (req, res, next) =>
   Collection.find({
@@ -17,6 +18,12 @@ router.get('/:id', (req, res, next) =>
 
 router.post('/', (req, res, next) =>
   Collection.create(req.body)
+    .then(item => res.send(item))
+    .catch(next)
+);
+
+router.put('/:id', (req, res, next) => 
+  Vote.findByIdAndUpdate(req.params.direction)
     .then(item => res.send(item))
     .catch(next)
 );

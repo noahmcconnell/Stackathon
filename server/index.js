@@ -12,11 +12,13 @@ server.use(express.static(__dirname + '/../www/'))
 
 //ROUTES
 let userRoutes = require('./routes/users')
+let favRoutes = require('./models/favorite-post')
 let postRoutes = require('./routes/posts')
 let answerRoutes = require('./routes/answers')
 let commentRoutes = require('./routes/posts')
 
 server.use('auth', userRoutes)
+server.use('/api/favorite-posts', favRoutes)
 server.use('/api/post', postRoutes)
 server.use('/api/answer', answerRoutes)
 server.use('/api/comment', commentRoutes)
