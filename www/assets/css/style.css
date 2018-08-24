@@ -238,3 +238,8 @@ body {
 textarea[resize='false'] {
   resize: none;
 }
+
+.post-header {
+  width: 100%;
+  justify-content: space-between;
+}
