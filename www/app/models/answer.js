@@ -6,4 +6,4 @@ export default class Answer {
       this.timestamp = data.timestamp
       this.postId = data.postId
     }
-  }
+}

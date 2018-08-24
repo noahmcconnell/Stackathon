@@ -4,4 +4,4 @@ export default class Answer {
       this.goalId = data.goalId
       this.userId = data.userId
     }
-  }
+}

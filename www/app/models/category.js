@@ -3,4 +3,4 @@ export default class Category {
       this._id = data._id
       this.name = data.name
     }
-  }
+}
