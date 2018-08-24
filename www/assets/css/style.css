@@ -84,6 +84,9 @@ body {
 .flex-column {
   flex-direction: column;
 }
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
 
 .p-3 {
   padding-top: 3rem !important;
