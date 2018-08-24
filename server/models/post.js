@@ -20,5 +20,9 @@ let schema = new Schema({
         type: ObjectId,
         require: true
     },
+    categoryId: {
+        type: ObjectId,
+        require: ObjectId
+    },
     correctAnswerId: null
 })
