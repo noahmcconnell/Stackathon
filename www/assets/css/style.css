@@ -1,6 +1,6 @@
 :root {
-  --theme-color: hsl(201, 97%, 73%);
-  --theme-vivid: hsl(201, 97%, 60%);
+  --theme-color: hsl(207, 90%, 54%);
+  --theme-vivid: hsl(201, 90%, 60%);
 }
 
 body {
@@ -10,28 +10,45 @@ body {
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.input-field {
+.page-header .input-field {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-.input-field input {
+.input-field.white input {
   color: #fafafa;
   border-bottom-color: #fafafa !important;
 }
-.input-field input + label {
+.input-field.white input + label {
   color: #fafafa;
 }
-.input-field input:focus + label {
+.input-field.white input:focus + label {
   color: white !important;
 }
 /* label underline focus color */
-.input-field input:focus {
+.input-field.white input:focus {
   color: white;
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important;
 }
-.input-field input + label.active {
+.page-heaader .input-field input + label.active {
   transform: translateY(-5px) scale(0.8) !important;
+}
+
+.input-field.theme input {
+  color: var(--theme-color);
+  border-bottom-color: var(--theme-color) !important;
+}
+.input-field.theme input + label {
+  color: #fafafa;
+}
+.input-field.theme input:focus + label {
+  color: theme !important;
+}
+/* label underline focus color */
+.input-field.theme input:focus {
+  color: theme;
+  border-bottom: 1px solid theme !important;
+  box-shadow: 0 1px 0 0 theme !important;
 }
 
 .search-bar {
