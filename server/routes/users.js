@@ -18,7 +18,7 @@ router.get('/:id', (req, res, next) =>
 router.post('/longin', (req, res, next) =>
   Collection.findOne({
     username: req.body.username,
-    pin: req.body.password})
+    password: req.body.password})
       .then(user => 
         {if(user){
           res.send(user)
