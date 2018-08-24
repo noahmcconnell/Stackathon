@@ -1,5 +1,6 @@
 :root {
-  --theme-color: #78cffd;
+  --theme-color: hsl(201, 97%, 73%);
+  --theme-vivid: hsl(201, 97%, 60%);
 }
 
 body {
@@ -18,8 +19,17 @@ body {
   border-bottom: 1px solid var(--theme-color) !important;
   box-shadow: 0 1px 0 0 var(--theme-color) !important;
 }
+.input-field input + label.active {
+  transform: translateY(-5px) scale(0.8) !important;
+}
 
+.search-bar {
+  width: 16rem;
+}
 .page-header {
+  position: fixed;
+  width: 100%;
+  height: 4.5rem;
   padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -34,12 +44,34 @@ body {
 .icon > .logo-star {
   width: 2rem;
 }
+.icon > .logo-star path {
+  fill: var(--theme-color);
+}
+
 .icon > .logo-name {
   width: 7rem;
   margin-left: 0.5rem;
   filter: brightness(85%);
 }
-.icon > .logo-name path,
-.icon > .logo-star path {
-  fill: var(--theme-color);
+.icon > .logo-name path {
+  fill: var(--theme-vivid);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+.btn-vivid {
+  background-color: var(--theme-vivid);
+  transition: all 0.2s;
+}
+.btn-vivid:hover {
+  background-color: var(--theme-vivid);
+  filter: saturate(60%);
+}
+.btn-vivid:focus {
+  background-color: var(--theme-vivid);
+}
+.buttons > button:not(:last-child) {
+  margin-right: 0.25rem;
 }

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Stackathon</title>
 </head>
 
@@ -26,7 +26,8 @@
             transform="rotate(0 72.10499846935272 21.255000114440918)"></path>
         </svg>
       </div>
-      <form>
+      <form onsubmit='app.controllers.fill.meIn(event)'>
+        <!-- onsubmit needs a controller method -->
         <div class="search-bar">
           <div class="input-field">
             <input id="search" type="text">
@@ -34,7 +35,14 @@
           </div>
         </div>
       </form>
+      <div class='buttons' id='login-buttons'>
+        <button class='btn btn-vivid'>Login</button>
+        <button class='btn-flat'>Sign Up</button>
+      </div>
     </header>
+    <main id='main-content'>
+      <section class=''></section>
+    </main>
   </div>
 
 
