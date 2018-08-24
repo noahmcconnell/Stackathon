@@ -1,11 +1,11 @@
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema
-let schemaName = 'Post'
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-let schema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-})
-module.exports = mongoose.model(schemaName,schema)
+const schema = new Schema({
+  name: {
+    type: String,
+    required: true
+  }
+});
+
+module.exports = mongoose.model('Category', schema);
