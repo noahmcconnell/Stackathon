@@ -11,9 +11,13 @@ server.use(bp.urlencoded(({
 server.use(express.static(__dirname + '/../www/'))
 
 //ROUTES
+let userRoutes = require('./routes/users')
 let answerRoutes = require('./routes/answers')
 let postRoutes = require('./routes/posts')
-let usersRoutes = require('./routes/users')
+
+server.use('auth', userRoutes)
+server.use('/api/answer', answerRoutes)
+server.use('/api/post', postRoutes)
 
 
 //ERROR Handlers
