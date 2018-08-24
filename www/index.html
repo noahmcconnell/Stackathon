@@ -42,18 +42,26 @@
       </div>
     </header>
     <main id='main-content'>
-      <section class='create-post'>
-        <div class="input-field theme">
-          <input id="search" type="text">
-          <label for="search">Search</label>
-        </div>
+      <section class='create-post flex flex-column'>
+        <form onsubmit='app.controllers.fill.meIn()'>
+          <!-- Fill in onsubmit -->
+          <div class="input-field theme fw-500 title-input">
+            <input id="question-title-input" type="text">
+            <label for="question-title-input">Title</label>
+          </div>
+          <div class='input-field textarea fw-500'>
+            <textarea id='question-content' resize='false'></textarea>
+            <label for='question-content'>What's your question?</label>
+          </div>
+        </form>
       </section>
     </main>
     <footer class='page-footer blue'>
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Did you know</h5>
-          <p class="grey-text text-lighten-4">Did you know Stackathon was built by four individuals and created in just 24 hours? </br> Talk about some hard workers!</p>
+          <p class="grey-text text-lighten-4">Did you know Stackathon was built by four individuals and created in just 24
+            hours? </br> Talk about some hard workers!</p>
         </div>
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Follow Us</h5>

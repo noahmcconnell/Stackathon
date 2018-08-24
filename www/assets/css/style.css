@@ -54,6 +54,26 @@ body {
   box-shadow: 0 1px 0 0 var(--theme-vivid) !important;
 }
 
+.input-field.fw-500 input {
+  border-bottom-width: 2px !important;
+}
+
+.input-field.textarea textarea + label {
+  transform: translate(20px, 10px);
+}
+.input-field.textarea textarea + label.active {
+  transform: translate(20px, -20px) scale(0.8) !important;
+}
+.input-field.textarea textarea {
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: solid 2px var(--theme-color);
+  border-radius: 2px;
+}
+.input-field.textarea label {
+  color: var(--theme-color);
+}
+
 .search-bar {
   width: 18rem;
 }
@@ -193,4 +213,16 @@ body {
   width: 75%;
   max-width: 45rem;
   padding: 2rem;
+  margin: 0 auto;
+}
+.create-post > form .textarea textarea {
+  min-height: 40rem;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+textarea[resize='false'] {
+  resize: none;
 }
