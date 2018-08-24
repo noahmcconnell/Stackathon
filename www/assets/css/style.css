@@ -84,13 +84,14 @@ body {
 .flex-column {
   flex-direction: column;
 }
-.justify-content-space-evenly {
-  justify-content: space-evenly;
-}
 
 .p-3 {
   padding-top: 3rem !important;
 }
 .mt-1 {
   margin-top: 1rem;
+}
+
+.question-card{
+  width: 32.5rem;
 }
