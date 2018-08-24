@@ -1,9 +1,7 @@
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema
-let ObjectId = Schema.Types.ObjectId
-let schemaName = 'Post'
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-let schema = new Schema({
+const schema = new Schema({
     title: {
         type: String,
         require: true
@@ -13,16 +11,25 @@ let schema = new Schema({
         require: true
     },
     userId: {
-        type: ObjectId,
-        require: true
+        type: Schema.Types.ObjectId,
+        require: true,
+        ref:"User"
     },
     timestamp: {
-        type: ObjectId,
+        type: Date,
         require: true
     },
     categoryId: {
-        type: ObjectId,
-        require: ObjectId
+        type: Schema.Types.ObjectId,
+        required: Schema.Types.ObjectId,
+        ref:"Category"
+
     },
-    correctAnswerId: null
-})
+    correctAnswerId: {
+        type: Schema.Types.ObjectId,
+        ref: 'CorrectAnswer',
+        required: false
+    }
+});
+
+module.exports = mongoose.model('Post', schema);
