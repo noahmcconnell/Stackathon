@@ -6,7 +6,7 @@ router.get('/by-user/:userId', (req, res, next) =>
   Answers.find({
       userId: req.params.userId
   })
-    .then(items => res.send(items))
+    .then(userId => res.send(userId))
     .catch(next)
 );
 
