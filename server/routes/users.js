@@ -15,11 +15,27 @@ router.get('/:id', (req, res, next) =>
     .catch(next)
 );
 
-router.post('/', (req, res, next) =>
-  Collection.create(req.body)
-    .then(item => res.send(item))
-    .catch(next)
+router.post('/longin', (req, res, next) =>
+  Collection.findOne({
+    username:req.body.username,
+    pin: req.body.password})
+      .then(user => 
+        {if(user){
+          res.send(user)
+        }
+        return res.status(401).send({
+          error:"Invaild login"
+        })
+      })
+    
 );
+
+router.post('/register', (req, res, next) => {
+    Collection.create(req.body).then(user => {
+      res.send(user)
+    }).catch(next)
+
+});
 
 router.put('/:id', (req, res, next) =>
   Collection.findByIdAndUpdate(req.params.id, req.body)
