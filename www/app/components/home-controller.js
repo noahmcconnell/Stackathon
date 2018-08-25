@@ -3,13 +3,31 @@ const store = new Store();
 
 const main = () => document.getElementById('main-content');
 
-async function draw() {
+async function draw(category = '') {
   const categories = (await store.getCategories())
     .map(
       category =>
         `<button class='btn-flat' onclick=''>${category.name}</button>`
     )
-    .join();
+    .join('');
+
+  const questions = (await store.getPosts(''))
+    .map(
+      question => `
+      <div class="card grey lighten-3 question-card" onclick=''>
+        <div class="card-content black-text flex flex-column">
+          <p class="title">${question.title}</p>
+          <div class="flex stats">
+            <p>${question.voteCount} <small>Votes</small></p>
+            <p>0 <small>Answers</small></p>
+          </div>
+          <p class='time-stamp'>posted ${question.timestamp} ago</p>
+        </div>
+      </div>
+    `
+    )
+    .join('');
+
   main().innerHTML = `
     <section class='homepage'>
       <div class='row'>
@@ -19,46 +37,7 @@ async function draw() {
         </div>
         <div class='col s9 flex flex-wrap'>
           <h1 class='title mt-1'>Questions</h1>
-          <div class="card grey lighten-3 question-card">
-            <div class="card-content black-text flex flex-column">
-              <p class="title">Overlap columns in Bootstrap 4</p>
-              <div class="flex stats">
-                <p>0 <small>Votes</small></p>
-                <p>10 <small>Answers</small></p>
-              </div>
-              <p class='time-stamp'>posted 2 days ago</p>
-            </div>
-          </div>
-          <div class="card grey lighten-3 question-card">
-            <div class="card-content black-text flex flex-column">
-              <p class="title">Overlap columns in Bootstrap 4</p>
-              <div class="flex stats">
-                <p>0 <small>Votes</small></p>
-                <p>10 <small>Answers</small></p>
-              </div>
-              <p class='time-stamp'>posted 2 days ago</p>
-            </div>
-          </div>
-          <div class="card grey lighten-3 question-card">
-            <div class="card-content black-text flex flex-column">
-              <p class="title">Overlap columns in Bootstrap 4</p>
-              <div class="flex stats">
-                <p>0 <small>Votes</small></p>
-                <p>10 <small>Answers</small></p>
-              </div>
-              <p class='time-stamp'>posted 2 days ago</p>
-            </div>
-          </div>
-          <div class="card grey lighten-3 question-card">
-            <div class="card-content black-text flex flex-column">
-              <p class="title">Overlap columns in Bootstrap 4</p>
-              <div class="flex stats">
-                <p>0 <small>Votes</small></p>
-                <p>10 <small>Answers</small></p>
-              </div>
-              <p class='time-stamp'>posted 2 days ago</p>
-            </div>
-          </div>
+          ${questions}
         </div>
       </div>
       <div class='fixed-action-btn' onclick='app.controllers.newPost.draw()'>

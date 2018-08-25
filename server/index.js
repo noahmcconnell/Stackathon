@@ -18,16 +18,17 @@ let favRoutes = require('./models/favorite-post');
 let postRoutes = require('./routes/posts');
 let answerRoutes = require('./routes/answers');
 let commentRoutes = require('./routes/comments');
-let categoryRoutes = require('./routes/categories')
+let categoryRoutes = require('./routes/categories');
 server.use('/auth', userRoutes);
 server.use('/api/favorite-posts', favRoutes);
 server.use('/api/posts', postRoutes);
 server.use('/api/answers', answerRoutes);
 server.use('/api/comments', commentRoutes);
-server.use('/api/categories', categoryRoutes)
+server.use('/api/categories', categoryRoutes);
 //ERROR Handlers
 server.use('/api/*', (err, req, res, next) => {
   res.status(400).send(err);
+  console.log(err);
 });
 server.unsubscribe('*', (req, res, next) => {
   res.status(404).send('<h1>404 Error<h1>');
