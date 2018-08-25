@@ -19,13 +19,22 @@ function setState(prop, data) {
   console.log(state);
 }
 
+const postJSON = (url, json) =>
+  fetch(url, {
+    method: 'post',
+    body: JSON.stringify(json),
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    }
+  });
+
 export default class Store {
   getPost(id) {
     return fetch('/api/posts/by-id/' + id)
       .then(res => res.json())
       .then(data => {
         setState('post', new Post(data));
-        fetch('/api/comments/by-post/' + id)
+        fetch('/api/comments/by-post/' + id);
         // newComment.get('') {
         // return fetch("/api/comment/by-id/" + id)
         // .then(res => res.json())
