@@ -1,19 +1,8 @@
 const router = require('express').Router();
-const Vote = require('../models/vote.js');
-
-router.get('/by-user/:userId', (req, res, next) =>
-  Vote.find({
-    userId: req.params.userId
-  })
-    .then(items => res.send(items))
-    .catch(next)
-);
-
-router.get('/:id', (req, res, next) =>
-  Vote.findById(req.params.id)
-    .then(item => res.send(item))
-    .catch(next)
-);
+const PostVote = require('../models/post-vote.js');
+const PCommentVote = require('../models/p-comment-vote.js')
+const AnswerVote = require('../models/answer-vote.js');
+const ACommentVote = require('../models/a-comment-vote.js');
 
 
 router.put('/:id', (req, res, next) =>
