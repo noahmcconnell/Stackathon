@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding-top: 4.5rem;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 #app {
@@ -17,6 +17,7 @@ body {
 }
 #main-content {
   flex: 1 0 auto;
+  padding: 2.5rem 0;
 }
 .page-footer {
   flex-shrink: 0;
@@ -267,7 +268,7 @@ body {
   font-weight: 500;
 }
 
-textarea[resize='false'] {
+textarea[resize="false"] {
   resize: none;
 }
 
@@ -328,6 +329,29 @@ textarea[resize='false'] {
   color: gold;
 }
 
-.login-signup{
-  
+.login-signup .input-field {
+  width: 30rem;
+  margin-bottom: 2.5rem;
+}
+
+.login-signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 100px;
+}
+.show {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #222;
+  transition: color 0.2s;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.show:hover {
+  color: #aaa;
 }
