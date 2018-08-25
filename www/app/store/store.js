@@ -6,8 +6,8 @@ import Post from "../models/post.js";
 let store
 
 let state = {
-    user: {},
-    post: {},
+    currentPost: {},
+    
     
     
     
@@ -46,7 +46,7 @@ export default class Store {
 
 
 
-
+//dis dat SINGLETON
     
     
     constructor() {
