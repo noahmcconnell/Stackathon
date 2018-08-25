@@ -32,3 +32,5 @@ server.use('/api/*', (err, req, res, next) => {
 server.unsubscribe('*', (req, res, next) => {
   res.status(404).send('<h1>404 Error<h1>');
 });
+
+server.listen(port, () => console.log(`Server started: ${port}`));
