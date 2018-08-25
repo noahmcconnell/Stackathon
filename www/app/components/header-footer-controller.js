@@ -62,6 +62,9 @@ function draw(isLoggedIn) {
 }
 
 export default class HeaderFooterController {
+  constructor() {
+    this.draw();
+  }
   draw() {
     draw(store.state.user.username !== '');
   }

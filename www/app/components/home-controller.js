@@ -88,7 +88,6 @@ export default class HomeController {
     this.draw();
   }
   draw() {
-    app.controllers.headerFooter.draw();
     draw();
   }
 }

@@ -7,9 +7,9 @@ import NewPostController from './components/new-post-controller.js';
 class App {
   constructor() {
     this.controllers = {
+      headerFooter: new HeaderFooterController(),
       home: new HomeController(),
       loginSignup: new LoginSignupController(),
-      headerFooter: new HeaderFooterController(),
       post: new PostController(),
       newPost: new NewPostController()
     };
