@@ -27,7 +27,7 @@ export default class Store {
       .then(res => res.json())
       .then(data => {
         setState("post", data.map(post => new Post(post)));
-        newComment.get('') {
+        // newComment.get('') {
             return fetch("/api/comment/by-id/" + id)
                 .then(res => res.json())
                 .then(data => {
@@ -50,12 +50,12 @@ export default class Store {
       .then(res => res.json())
       .then(data => {
             setState("answer", data.map(answer => new Answer(answer)));
-            Comment.get('')
-            .then((res) => {
-                answerComments = (res.data.data)
-                return
-            }
-        )
+            // Comment.get('')
+            // .then((res) => {
+                // answerComments = (res.data.data)
+                // return
+            // }
+        // )
         })
   }
 
