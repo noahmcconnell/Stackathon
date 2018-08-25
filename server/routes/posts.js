@@ -19,7 +19,7 @@ router.get('/:id', (req, res, next) =>
       }
       Votes.find({ postId: id })
         .then(votes => {
-          count = votes.reduce(
+          const count = votes.reduce(
             (total, vote) => total + (vote.direction ? 1 : -1),
             0
           );

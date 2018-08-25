@@ -1,12 +1,35 @@
-const router = require('express').Router()
-const Collection = require('../models/answer')
+const router = require('express').Router();
+const Collection = require('../models/answer');
+const Votes = require('../models/answer-vote');
 
-router.get('/post/:userId', (req, res, next) =>
+router.get('/by-post/:postId', (req, res, next) =>
   Collection.find({
-      userId: req.params.userId
+    postId: req.params.postId
   })
-    .then(userId => res.send(userId))
-    .catch(next)
+    .populate({
+      path: 'userId',
+      select: 'username -_id'
+    })
+    .exec((err, items) => {
+      if (err) {
+        return next(err);
+      }
+      Promise.all(
+        items.map(item => {
+          return Votes.find({ answerId: item._id })
+            .then(votes => {
+              count = votes.reduce(
+                (total, vote) => total + (vote.direction ? 1 : -1),
+                0
+              );
+              return { ...item, voteCount: count };
+            })
+            .catch(next);
+        })
+      )
+        .then(answers => res.send(answers))
+        .catch(next);
+    })
 );
 
 router.get('/:id', (req, res, next) =>
