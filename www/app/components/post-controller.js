@@ -18,7 +18,7 @@ function draw() {
       (timestamp = "August 24 12:00"),
       (postId = "post id"),
       (userId = "users name"),
-      (content = "Here is the comment")
+      (content = "Here is the comment"),
     ]
   };
 
