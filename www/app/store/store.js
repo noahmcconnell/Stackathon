@@ -89,11 +89,18 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
-  getPosts() {
-    return fetch("/api/posts")
+  getPosts(categoryId) {
+    if (categoryId) {
+      return fetch("/api/posts/category/" + categoryId)
+        .then(res => res.json())
+        .catch(error => console.error(error));
+    }
+    return fetch("api/posts")
       .then(res => res.json())
-      .catch(error => console.error(error));  
+      .catch(error => console.error(error));
   }
+
+  //voteCount() {}
 
   //dis dat SINGLETON
 
