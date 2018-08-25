@@ -1,10 +1,8 @@
 const router = require('express').Router();
-const Collection = require('../models/user');
+const Collection = require('../models/category');
 
 router.get('/', (req, res, next) =>
-  Collection.find({
-    userId: req.params.userId
-  })
+  Collection.find({})
     .then(items => res.send(items))
     .catch(next)
 );
@@ -15,27 +13,11 @@ router.get('/:id', (req, res, next) =>
     .catch(next)
 );
 
-router.post('/login', (req, res, next) =>
-  Collection.findOne({
-    username: req.body.username,
-    password: req.body.password
-  }).then(user => {
-    if (user) {
-      return res.send(user);
-    }
-    return res.status(401).send({
-      error: 'Invaild login'
-    });
-  })
-);
-
-router.post('/register', (req, res, next) => {
+router.post('/', (req, res, next) =>
   Collection.create(req.body)
-    .then(user => {
-      res.send(user);
-    })
-    .catch(next);
-});
+    .then(item => res.send(item))
+    .catch(next)
+);
 
 router.put('/:id', (req, res, next) =>
   Collection.findByIdAndUpdate(req.params.id, req.body)
