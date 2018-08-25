@@ -25,4 +25,8 @@ function draw() {
 
 export default class NewPostController {
   constructor() {}
+  draw() {
+    app.controllers.headerFooter.draw();
+    draw();
+  }
 }

@@ -65,6 +65,7 @@ function draw() {
 export default class PostController {
   constructor() {}
   async draw(id) {
+    app.controllers.headerFooter.draw();
     await state.store.getPost(id);
     draw();
   }
