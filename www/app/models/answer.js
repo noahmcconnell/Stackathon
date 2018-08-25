@@ -5,5 +5,6 @@ export default class Answer {
       this.userId = data.userId
       this.timestamp = data.timestamp
       this.postId = data.postId
+      this.comments = data.comments
     }
 }
