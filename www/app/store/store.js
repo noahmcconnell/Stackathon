@@ -1,12 +1,16 @@
 import User from "../models/user.js";
-import Goal from "../models/goal.js";
 import Post from "../models/post.js";
+
+
 
 
 let store
 
 let state = {
+    user:{},
     currentPost: {},
+
+
     
     
     
@@ -18,15 +22,17 @@ function setState(prop, data){
 }
 
 export default class Store {
-    getPost(_id){
-        fetch('/api/post/by-id/'+ state.user._id)
+    getPost(id){
+
+        return fetch('/api/post/by-id/'+ id)
         .then(res=> res.json())
         .then(data=>{
             setState('post',data.map(post=> new Post(post)))
-            draw()
+            
         })
-
     }
+            
+
     login(creds, draw){
         fetch('/auth/login',{
         method:'post',
