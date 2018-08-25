@@ -21,10 +21,11 @@ function setState(prop, data) {
 
 export default class Store {
   getPost(id) {
-    return fetch('/api/post/by-id/' + id)
+    return fetch('/api/posts/by-id/' + id)
       .then(res => res.json())
       .then(data => {
-        setState('post', data.map(post => new Post(post)));
+        setState('post', new Post(data));
+        fetch('/api/comments/by-post/' + id)
         // newComment.get('') {
         // return fetch("/api/comment/by-id/" + id)
         // .then(res => res.json())
