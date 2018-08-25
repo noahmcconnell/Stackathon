@@ -29,7 +29,7 @@ const postJSON = (url, json) =>
 
 export default class Store {
   getPost(id) {
-    return fetch("/api/posts/by-id/" + id)
+    return fetch("/api/posts/" + id)
       .then(res => res.json())
       .then(postData => {
         fetch("/api/comments/by-post/" + id)
