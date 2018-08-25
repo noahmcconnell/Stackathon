@@ -17,7 +17,7 @@ router.get('/:id', (req, res, next) =>
       if (err) {
         return next(err);
       }
-      Votes.find({ postId: id })
+      Votes.find({ postId: item._id })
         .then(votes => {
           const count = votes.reduce(
             (total, vote) => total + (vote.direction ? 1 : -1),
