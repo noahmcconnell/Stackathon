@@ -15,26 +15,26 @@ router.get('/:id', (req, res, next) =>
     .catch(next)
 );
 
-router.post('/longin', (req, res, next) =>
+router.post('/login', (req, res, next) =>
   Collection.findOne({
     username: req.body.username,
-    password: req.body.password})
-      .then(user => 
-        {if(user){
-          res.send(user)
-        }
-        return res.status(401).send({
-          error:"Invaild login"
-        })
-      })
-    
+    password: req.body.password
+  }).then(user => {
+    if (user) {
+      res.send(user);
+    }
+    return res.status(401).send({
+      error: 'Invaild login'
+    });
+  })
 );
 
 router.post('/register', (req, res, next) => {
-    Collection.create(req.body).then(user => {
-      res.send(user)
-    }).catch(next)
-
+  Collection.create(req.body)
+    .then(user => {
+      res.send(user);
+    })
+    .catch(next);
 });
 
 router.put('/:id', (req, res, next) =>
