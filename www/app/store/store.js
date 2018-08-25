@@ -3,7 +3,7 @@ import Post from "../models/post.js";
 import Answer from "../models/answer.js";
 import PostComment from "../models/post-comment.js";
 import AnswerComment from "../models/answer-comment.js";
-import Vote from "../models/vote.js"
+import Vote from "../models/vote.js";
 
 let store;
 
@@ -62,7 +62,7 @@ export default class Store {
               comments: comments.map(comment => new Comment(comment))
             });
           })
-        ).then(answerList => setState('answers', answerList));
+        ).then(answerList => setState("answers", answerList));
       });
   }
 
@@ -83,7 +83,11 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
-  
+  getCategories(cate) {
+    return fetch("/api/categories")
+      .then(res => res.json())
+      .catch(error => console.error(error));
+  }
 
   //dis dat SINGLETON
 
