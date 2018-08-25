@@ -9,26 +9,26 @@ function draw() {
       <div class='row'>
         <div class='col s3 flex flex-column p-3 grey lighten-5 categories'>
           <h5 align='center'>Categories</h5>
-          <button class="btn-flat">Angular</button>
-          <button class="btn-flat">Bootstrap</button>
-          <button class="btn-flat">Cards</button>
-          <button class="btn-flat">Classes</button>
-          <button class="btn-flat">Command Line</button>
-          <button class="btn-flat">CSS</button>
-          <button class="btn-flat">Flexbox</button>
-          <button class="btn-flat">Forms</button>
-          <button class="btn-flat">HTML5</button>
-          <button class="btn-flat">Inputs</button>
-          <button class="btn-flat">JavaScript</button>
-          <button class="btn-flat">Memes</button>
-          <button class="btn-flat">Node.js</button>
-          <button class="btn-flat">Pillars</button>
-          <button class="btn-flat">React</button>
-          <button class="btn-flat">Redux</button>
-          <button class="btn-flat">Scrum</button>
-          <button class="btn-flat">Syntax</button>
-          <button class="btn-flat">Tables</button>
-          <button class="btn-flat">Vue</button>
+          <button class="btn-flat" onclick=''>Angular</button>
+          <button class="btn-flat" onclick=''>Bootstrap</button>
+          <button class="btn-flat" onclick=''>Cards</button>
+          <button class="btn-flat" onclick=''>Classes</button>
+          <button class="btn-flat" onclick=''>Command Line</button>
+          <button class="btn-flat" onclick=''>CSS</button>
+          <button class="btn-flat" onclick=''>Flexbox</button>
+          <button class="btn-flat" onclick=''>Forms</button>
+          <button class="btn-flat" onclick=''>HTML5</button>
+          <button class="btn-flat" onclick=''>Inputs</button>
+          <button class="btn-flat" onclick=''>JavaScript</button>
+          <button class="btn-flat" onclick=''>Memes</button>
+          <button class="btn-flat" onclick=''>Node.js</button>
+          <button class="btn-flat" onclick=''>Pillars</button>
+          <button class="btn-flat" onclick=''>React</button>
+          <button class="btn-flat" onclick=''>Redux</button>
+          <button class="btn-flat" onclick=''>Scrum</button>
+          <button class="btn-flat" onclick=''>Syntax</button>
+          <button class="btn-flat" onclick=''>Tables</button>
+          <button class="btn-flat" onclick=''>Vue</button>
         </div>
         <div class='col s9 flex flex-wrap'>
           <h1 class='title mt-1'>Questions</h1>
