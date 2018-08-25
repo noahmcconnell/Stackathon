@@ -27,14 +27,15 @@ const postJSON = (url, json) =>
       'Content-Type': 'application/json; charset=utf-8'
     }
   });
-
+  
 export default class Store {
   getPost(id) {
     return fetch('/api/posts/by-id/' + id)
       .then(res => res.json())
       .then(data => {
         setState('post', new Post(data));
-        fetch('/api/comments/by-post/' + id);
+        fetch('/api/comments/by-post/' + id)
+            .then(posts => posts.json())
         // newComment.get('') {
         // return fetch("/api/comment/by-id/" + id)
         // .then(res => res.json())
