@@ -6,5 +6,6 @@ export default class Answer {
       this.timestamp = data.timestamp
       this.postId = data.postId
       this.comments = data.comments
+      this.voteTotal = data.voteTotal
     }
 }

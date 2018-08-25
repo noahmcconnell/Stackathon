@@ -5,5 +5,6 @@ export default class Comment {
       this.userId = data.userId
       this.timestamp = data.timestamp
       this.postId = data.postId
+      this.voteTotal = data.voteTotal
     }
 }

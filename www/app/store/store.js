@@ -3,6 +3,7 @@ import Post from "../models/post.js";
 import Answer from "../models/answer.js";
 import PostComment from "../models/post-comment.js";
 import AnswerComment from "../models/answer-comment.js";
+import Vote from "../models/vote.js"
 
 let store;
 
@@ -81,6 +82,8 @@ export default class Store {
       })
       .catch(error => console.error(error));
   }
+
+  
 
   //dis dat SINGLETON
 

@@ -8,5 +8,6 @@ export default class Post{
       this.categoryId = data.categoryId
       this.correctAnswerId = data.correctAnswerId
       this.comments = data.comments
+      this.voteTotal = data.voteTotal
     }
 }
