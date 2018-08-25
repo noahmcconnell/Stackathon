@@ -1,4 +1,4 @@
-export default class Answer {
+export default class Post{
     constructor(data) {
       this._id = data._id
       this.title = data.title

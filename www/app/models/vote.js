@@ -1,4 +1,4 @@
-export default class Answer {
+export default class Vote {
     constructor(data) {
       this._id = data._id
       this.user = data.user

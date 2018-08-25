@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Collection = require('../models/post');
 const Vote = require('../models/vote');
 
-router.get('/', (req, res, next) =>
+router.get('/by-user/:userId', (req, res, next) =>
   Collection.find({
     userId: req.params.userId
   })
