@@ -36,7 +36,7 @@ router.post('/', (req, res, next) =>
 );
 
 router.put('/:id', (req, res, next) =>
-  Vote.findByIdAndUpdate(req.params.id, req.body)
+  Votes.findByIdAndUpdate(req.params.id, req.body)
     .then(item => res.send(item))
     .catch(next)
 );
