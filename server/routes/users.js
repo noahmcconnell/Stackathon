@@ -21,7 +21,7 @@ router.post('/login', (req, res, next) =>
     password: req.body.password
   }).then(user => {
     if (user) {
-      res.send(user);
+      return res.send(user);
     }
     return res.status(401).send({
       error: 'Invaild login'

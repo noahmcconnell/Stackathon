@@ -9,9 +9,7 @@ function draw(isLogin = true) {
   }
   appElement.innerHTML = `
   <section class="login-signup container">
-    <form onsubmit='app.controllers.loginSignup.${
-      isLogin ? 'login' : 'signup'
-    }(event)'>
+    <form onsubmit='app.controllers.loginSignup.loginOrSignup(event)'>
       <div class="input-field theme fw-500">
         <input id="username" name='username' type="text" class="validate" required>
         <label for="username">Username</label>
@@ -38,7 +36,7 @@ export default class LoginSignupController {
   drawSignup() {
     draw(false);
   }
-  async login(event) {
+  async loginOrSignup(event) {
     event.preventDefault();
     try {
       const error = await store.login({
@@ -46,7 +44,7 @@ export default class LoginSignupController {
         password: event.target.password.value
       });
       if (error) {
-        app.toastMessage(error);
+        return app.toastMessage(error);
       }
       app.controllers.home.draw();
     } catch (error) {
