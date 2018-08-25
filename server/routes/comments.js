@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const PostComments = require("../models/post-comment");
 const AnswerComments = require("../models/answer-comment");
+const AnswerCommentVote = require('../models/a-comment-vote');
+const PostCommentVote = require('../models/p-comment-vote');
 
 router.get("/by-post/:postId", (req, res, next) =>
   PostComments.find({
@@ -14,7 +16,9 @@ router.get("/by-post/:postId", (req, res, next) =>
     if (error) {
       return next(error);
     }
-    res.send(comments);
+    comments = comments.map(comment => {
+      const count = 
+    })
   })
 );
 
