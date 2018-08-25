@@ -7,9 +7,10 @@ class App {
       home: new HomeController(),
       loginSignup: new LoginSignupController()
     };
+    this.toasts = document.getElementById('toasts');
   }
   toastMessage(string) {
-    new ToastMessage(string);
+    this.toasts.innerHTML += `<toast-message>${string}</toast-message>`;
   }
 }
 
