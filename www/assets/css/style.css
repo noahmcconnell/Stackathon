@@ -10,6 +10,18 @@ body {
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 4.5rem);
+}
+#main-content {
+  flex: 1 0 auto;
+}
+.page-footer {
+  flex-shrink: 0;
+}
+
 .page-header .input-field {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -145,6 +157,23 @@ body {
   background-color: var(--theme-color);
 }
 
+.btn-icon {
+  background: none !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.btn-icon:hover {
+  color: lightgrey;
+}
+.btn-icon > i.material-icons {
+  font-size: 1.15rem;
+  margin-left: 0.35rem;
+  transform: translateY(0.05rem);
+}
+
 .flex {
   display: flex;
 }
@@ -153,6 +182,9 @@ body {
 }
 .flex-wrap {
   flex-wrap: wrap;
+}
+.align-items-center {
+  align-items: center;
 }
 
 .p-3 {
@@ -242,4 +274,56 @@ textarea[resize='false'] {
 .post-header {
   width: 100%;
   justify-content: space-between;
+  position: relative;
+}
+
+.page-footer {
+  margin-top: auto;
+}
+
+.upvote-downvote {
+  width: 5.5rem;
+  justify-content: space-between;
+}
+.upvote-downvote > span {
+  font-size: 1.2rem;
+}
+.upvote-downvote.vertical {
+  justify-content: center;
+  margin-right: 1rem;
+}
+.upvote-downvote > span {
+  font-size: 1rem;
+}
+.upvote-downvote > i {
+  font-size: 2rem;
+  transition: color 0.2s;
+}
+.upvote-downvote.vertical > i {
+  font-size: 1.25rem;
+}
+.upvote-downvote > i:hover {
+  color: var(--theme-vivid);
+  cursor: pointer;
+}
+
+.comment {
+  border-top: solid 1px #ccc;
+  margin-top: 1.5rem;
+}
+.comment:last-child {
+  border-bottom: solid 1px #ccc;
+}
+
+.favorite {
+  font-size: 2.8rem !important;
+  color: lightgrey;
+  display: table !important;
+  position: absolute;
+  left: -3rem;
+  top: calc(50% - 1.1rem);
+  cursor: pointer;
+}
+.favorite.favorited {
+  color: gold;
 }
