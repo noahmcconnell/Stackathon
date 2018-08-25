@@ -1,11 +1,13 @@
-import HomeController from "./components/home/home-controller"
+import HomeController from './components/home-controller.js';
+import LoginSignupController from './components/login-signup-controller.js';
 
 class App {
-    constructor() {
-      this.controllers = {
-        homeController: new HomeController(),
-      }
-    }
+  constructor() {
+    this.controllers = {
+      home: new HomeController(),
+      loginSignup: new LoginSignupController()
+    };
+  }
 }
 
-window.app = new App()
+window.app = new App();
