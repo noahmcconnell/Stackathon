@@ -23,15 +23,8 @@ router.get('/:id', (req, res, next) =>
             (total, vote) => total + (vote.direction ? 1 : -1),
             0
           );
-          res.send({
-            title: item.title,
-            content: item.content,
-            userId: item.userId,
-            timestamp: item.timestamp,
-            categoryId: item.categoryId,
-            correctAnswerId: item.correctAnswerId,
-            voteCount: count
-          });
+          item._doc.voteCount = count;
+          res.send(item);
         })
         .catch(next);
     })
