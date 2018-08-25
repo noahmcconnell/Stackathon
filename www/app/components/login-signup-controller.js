@@ -24,4 +24,9 @@ function draw() {
 
 export default class Controller {
   constructor() {}
+  drawLogin(){
+    
+  }
+
+  drawSignUp(){}
 }
