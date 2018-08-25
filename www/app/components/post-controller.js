@@ -25,7 +25,7 @@ function draw() {
   };
 
   main.innerHTML = `
-    <section class='post container'>
+    <section class='post container' >
       <header class='post-header flex'>
         <i class='material-icons favorite'>star</i>
         <h3 class='title'>Overlap columns in bootstrap 4</h3>
