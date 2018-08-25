@@ -19,7 +19,9 @@ const schema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'Post'
-  }
+  },
+
+  user: { type: 'User', virtual: true }
 });
 
 module.exports = mongoose.model('PostComment', schema);

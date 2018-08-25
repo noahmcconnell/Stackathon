@@ -11,9 +11,11 @@ router.get('/by-user/:userId', (req, res, next) =>
 );
 
 router.get('/:id', (req, res, next) =>
-  Collection.findById(req.params.id)
-    .then(item => res.send(item))
-    .catch(next)
+  Collection.findById(req.params.id).populate({ path: 'userId', select: "username -_id" })
+    .exec((err, item) => {
+      if (err) { return next(err) }
+      res.send(item)
+    })
 );
 
 router.post('/', (req, res, next) =>
@@ -21,15 +23,15 @@ router.post('/', (req, res, next) =>
     .then(item => res.send(item))
     .catch(next)
 );
-router.post('/:id',(req,res,next)=>
-Vote.create(req.params.body)
- .then(item=> res.send(item))
- .catch(next)
+router.post('/:id/vote', (req, res, next) =>
+  Vote.create(req.body)
+    .then(item => res.send(item))
+    .catch(next)
 )
 
 
-router.put('/:id', (req, res, next) => 
-  Vote.findByIdAndUpdate(req.params.direction)
+router.put('/:id', (req, res, next) =>
+  Vote.findByIdAndUpdate(req.params.id, req.body)
     .then(item => res.send(item))
     .catch(next)
 );

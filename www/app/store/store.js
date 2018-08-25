@@ -31,7 +31,7 @@ export default class Store {
             return fetch("/api/comment/by-id/" + id)
                 .then(res => res.json())
                 .then(data => {
-                setState("comment", data.map(comment => new Comment(comment)));
+                
         }
         //     .then((res) => {
         //         postComments = (res.data.data)
