@@ -45,7 +45,10 @@ export default class Store {
     .then(data => {
         setState('user', new User(data))
     })
-    .catch(console.error)
+    .catch(error=>console.error(error)
+        
+    
+    )
 }
 
 
