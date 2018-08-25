@@ -1,43 +1,67 @@
-const router = require('express').Router();
-const PostComments = require('../models/post-comment');
-const AnswerComments = require('../models/answer-comment');
+const router = require("express").Router();
+const PostComments = require("../models/post-comment");
+const AnswerComments = require("../models/answer-comment");
 
-router.get('/by-post/:postId', (req, res, next) =>
+router.get("/by-post/:postId", (req, res, next) =>
   PostComments.find({
     postId: req.params.postId
   })
-    .then(comments => res.send(comments))
-    .catch(next)
-);
-router.get('/by-answer/:answerId', (req, res, next) =>
-  AnswerComments.find({
-    answerId: req.params.answerId
+  .populate({
+    path: "userId",
+    select: "username - _id"
   })
-    .then(comments => res.send(comments))
-    .catch(next)
+  .exec((error, comments) => {
+    if (error) {
+      return next(error);
+    }
+    res.send(comments);
+  })
 );
 
-router.get('/post/:id', (req, res, next) =>
+router.get(
+  "/by-answer/:answerId",
+  (req, res, next) =>
+    AnswerComments.find({
+      answerId: req.params.answerId
+    })
+      .populate({
+        path: "userId",
+        select: "username - _id"
+      })
+      .exec((error, comments) => {
+        if (error) {
+          return next(error);
+        }
+        res.send(comments);
+      })
+  // Collection.findById(req.params.id).populate({ path: 'userId', select: "username -_id" })
+  // .exec((err, item) => {
+  //   if (err) { return next(err) }
+  //   res.send(item)
+  // })
+);
+
+router.get("/post/:id", (req, res, next) =>
   PostComments.findById(req.params.id)
     .then(item => res.send(item))
     .catch(next)
 );
 
-router.post('/post', (req, res, next) =>
+router.post("/post", (req, res, next) =>
   PostComments.create(req.body)
     .then(item => res.send(item))
     .catch(next)
 );
 
-router.put('/post/:id', (req, res, next) =>
+router.put("/post/:id", (req, res, next) =>
   PostComments.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => res.send({ message: 'Successfully updated comment.' }))
+    .then(() => res.send({ message: "Successfully updated comment." }))
     .catch(next)
 );
 
-router.delete('/post/:id', (req, res, next) =>
+router.delete("/post/:id", (req, res, next) =>
   PostComments.findByIdAndRemove(req.params.id)
-    .then(() => res.send({ message: 'Successfully deleted item.' }))
+    .then(() => res.send({ message: "Successfully deleted item." }))
     .catch(next)
 );
 
