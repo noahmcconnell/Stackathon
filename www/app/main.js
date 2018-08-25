@@ -8,6 +8,9 @@ class App {
       loginSignup: new LoginSignupController()
     };
   }
+  toastMessage(string) {
+    new ToastMessage(string);
+  }
 }
 
 window.app = new App();

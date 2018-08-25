@@ -1,23 +1,23 @@
 import Store from '../store/store.js';
 const store = new Store();
 
-const app = document.getElementById('app');
+const appElement = document.getElementById('app');
 
 function draw(isLogin = true) {
   if (store.state.user.username) {
     return;
   }
-  app.innerHTML = `
+  appElement.innerHTML = `
   <section class="login-signup container">
-    <form onclick='app.controllers.loginSignup.${
+    <form onsubmit='app.controllers.loginSignup.${
       isLogin ? 'login' : 'signup'
-    }()'>
+    }(event)'>
       <div class="input-field theme fw-500">
-        <input id="username" type="text" class="validate">
+        <input id="username" name='username' type="text" class="validate" required>
         <label for="username">Username</label>
       </div>
       <div class="input-field theme fw-500">
-        <input id="password" type="password" class="validate">
+        <input id="password" type="password" name='password' class="validate" required>
         <label for="password">Password</label>
         <small class="show">show</small>
       </div>
@@ -35,7 +35,19 @@ export default class LoginSignupController {
   drawLogin() {
     draw(true);
   }
-  drawSignUp() {
+  drawSignup() {
     draw(false);
+  }
+  async login(event) {
+    event.preventDefault();
+    await store.login({
+      username: event.target.username.value,
+      password: event.target.password.value
+    });
+    if (store.state.user.username) {
+      app.controllers.home.draw();
+    } else {
+      app.toastMessage('Unable to login');
+    }
   }
 }
