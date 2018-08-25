@@ -1,7 +1,7 @@
 import Store from '../store/store.js';
 const store = new Store();
 
-const main = () => document.getElementById('main');
+const main = () => document.getElementById('main-content');
 
 function draw() {
   main().innerHTML = `
