@@ -1,10 +1,10 @@
 import Store from '../store/store.js';
 const store = new Store();
 
-const main = document.getElementById('main');
+const main = () => document.getElementById('main-content');
 
 function draw() {
-  main.innerHTML = `
+  main().innerHTML = `
     <section class='post container'>
       <header class='post-header flex'>
         <i class='material-icons favorite'>star</i>
@@ -16,28 +16,24 @@ function draw() {
         </div>
       </header>
       <article class='article'>
-        ${marked(store.state.post.content)}
-        ${
-          store.state.user._id === store.state.post.userId._id
-            ? "<button class='btn-icon'>edit <i class='material-icons'>edit</i></button>"
-            : ''
-        }
+        ${marked(store.state.post.content || '')}
+        <button class='btn-icon'>edit <i class='material-icons'>edit</i></button>
         <div class='comments flex flex-column'>
           ${store.state.post.comments
             .map(
-              comment => `
+              cmt => `
           <article class="comment flex">
             <div class='flex flex-column upvote-downvote vertical'>
               <i class='material-icons'>thumb_up_alt</i>
-              <span align='center'>${comment.voteCount}</span>
+              <span align='center'>${cmt.voteCount}</span>
               <i class='material-icons'>thumb_down_alt</i>
             </div>
             <p>${marked(
-              comment.content
+              cmt.content || ''
             )}<span class="user-info">– <span class='blue-text'>${
-                comment.userId.username
+                cmt.userId.username
               }</span>
-                ${comment.timestamp} ago</p>
+                ${cmt.timestamp} ago</p>
           </article>`
             )
             .join('')}
@@ -46,12 +42,8 @@ function draw() {
       ${store.state.answers.map(
         answer => `
         <article class='article'>
-          ${marked(answer.content)}
-          ${
-            store.state.user._id === answer.userId._id
-              ? "<button class='btn-icon'>edit <i class='material-icons'>edit</i></button>"
-              : ''
-          }
+          ${marked(answer.content || '')}
+          <button class='btn-icon'>edit <i class='material-icons'>edit</i></button>
           <div class='comments flex flex-column'>
             ${answer.comments
               .map(
@@ -61,9 +53,8 @@ function draw() {
                 <span align='center'>${comment.voteCount}</span>
                 <i class='material-icons'>thumb_down_alt</i>
               </div>
-              <p>${marked(
-                comment.content
-              )}<span class="user-info">– <span class='blue-text'>${
+              <p>${marked(comment.content) ||
+                ''}<span class="user-info">– <span class='blue-text'>${
                   comment.userId.username
                 }</span>
                 ${comment.timestamp} ago</p>

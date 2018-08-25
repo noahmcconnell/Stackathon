@@ -1,7 +1,7 @@
-import Store from "../store/store.js";
+import Store from '../store/store.js';
 const store = new Store();
 
-const appElement = document.getElementById("app");
+const appElement = document.getElementById('app');
 
 function draw(isLogin = true) {
   if (store.state.user.username) {
@@ -21,7 +21,7 @@ function draw(isLogin = true) {
         </svg>
   </div>
   <section class="login-signup container">
-    <form onsubmit='app.controllers.loginSignup.loginOrSignup(event)'>
+    <form onsubmit='app.controllers.loginSignup.loginOrSignup(event, ${isLogin})'>
       <div class="input-field theme fw-500">
         <input id="username" name='username' type="text" class="validate" required>
         <label for="username">Username</label>
@@ -32,7 +32,7 @@ function draw(isLogin = true) {
         <small class="show">show</small>
       </div>
       <button class="btn btn-theme waves-effect waves-light" type="submit">${
-        isLogin ? "Login" : "Signup"
+        isLogin ? 'Login' : 'Signup'
       }</button>
     </form>
   </section>
@@ -48,10 +48,10 @@ export default class LoginSignupController {
   drawSignup() {
     draw(false);
   }
-  async loginOrSignup(event) {
+  async loginOrSignup(event, isLogin) {
     event.preventDefault();
     try {
-      const error = await store.login({
+      const error = await (isLogin ? store.login : store.register)({
         username: event.target.username.value,
         password: event.target.password.value
       });

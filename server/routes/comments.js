@@ -10,7 +10,7 @@ router.get('/by-post/:postId', (req, res, next) =>
   })
     .populate({
       path: 'userId',
-      select: 'username - _id'
+      select: 'username -_id'
     })
     .exec((error, commentsData) => {
       if (error) {
@@ -38,7 +38,7 @@ router.get('/by-answer/:answerId', (req, res, next) =>
   })
     .populate({
       path: 'userId',
-      select: 'username - _id'
+      select: 'username -_id'
     })
     .exec((error, commentsData) => {
       if (error) {
