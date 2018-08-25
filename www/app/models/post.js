@@ -7,5 +7,6 @@ export default class Post{
       this.timestamp = data.timestamp
       this.categoryId = data.categoryId
       this.correctAnswerId = data.correctAnswerId
+      this.comments = data.comments
     }
 }

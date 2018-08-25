@@ -3,6 +3,8 @@ import Post from "../models/post.js";
 import Answer from "../models/answer.js";
 import Comment from "../models/comment.js";
 
+let newAnswer = new Answer
+let newComment = new Comment
 
 let store;
 let answers = []
@@ -25,8 +27,17 @@ export default class Store {
       .then(res => res.json())
       .then(data => {
         setState("post", data.map(post => new Post(post)));
-
-
+        newComment.get('') {
+            return fetch("/api/comment/by-id/" + id)
+                .then(res => res.json())
+                .then(data => {
+                setState("comment", data.map(comment => new Comment(comment)));
+        }
+        //     .then((res) => {
+        //         postComments = (res.data.data)
+        //         return
+        //     }
+        // )
         //get all comments
         //get all answers
         //<--- in
@@ -36,10 +47,15 @@ export default class Store {
 
   getAnswer(id) {
     return fetch("/api/answer/by-id/" + id)
-        .then(res => res.json())
-        .then(data => {
+      .then(res => res.json())
+      .then(data => {
             setState("answer", data.map(answer => new Answer(answer)));
-            return fetch("/api/comment/by-id" + id)
+            Comment.get('')
+            .then((res) => {
+                answerComments = (res.data.data)
+                return
+            }
+        )
         })
   }
 
