@@ -107,6 +107,7 @@ body {
 .icon {
   display: flex;
   height: 5rem;
+  cursor: pointer;
 }
 .icon > .logo-star {
   width: 2rem;
