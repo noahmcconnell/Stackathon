@@ -1,11 +1,11 @@
-const router = require('express').Router()
-const Collection = require('../models/post-comment')
+const router = require('express').Router();
+const Collection = require('../models/post-comment');
 
-router.get('/by-user/:userId', (req, res, next) =>
+router.get('/by-post/:postId', (req, res, next) =>
   Collection.find({
-      userId: req.params.userId
+    postId: req.params.postId
   })
-    .then(userId => res.send(userId))
+    .then(comments => res.send(comments))
     .catch(next)
 );
 
