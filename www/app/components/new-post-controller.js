@@ -1,4 +1,4 @@
-import Store from '../../store/store.js';
+import Store from '../store/store.js';
 const store = new Store();
 
 const main = document.getElementById('main-content');
