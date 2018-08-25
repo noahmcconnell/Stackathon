@@ -85,4 +85,8 @@ function draw() {
 
 export default class HomeController {
   constructor() {}
+  draw() {
+    app.controllers.headerFooter.draw();
+    draw();
+  }
 }
