@@ -33,8 +33,8 @@ export default class Store {
     }
             
 
-    login(creds, draw){
-        fetch('/auth/login',{
+    login(creds){
+        return fetch('/auth/login',{
         method:'post',
         body: JSON.stringify(creds),
         headers:{
@@ -44,7 +44,6 @@ export default class Store {
     .then(res => res.json())
     .then(data => {
         setState('user', new User(data))
-        draw()
     })
     .catch(console.error)
 }
