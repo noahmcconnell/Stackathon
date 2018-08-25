@@ -23,7 +23,7 @@ router.get('/:id', (req, res, next) =>
             (total, vote) => total + (vote.direction ? 1 : -1),
             0
           );
-          res.send({ {
+          res.send({
             title: item.title,
             content: item.content,
             userId: item.userId,
