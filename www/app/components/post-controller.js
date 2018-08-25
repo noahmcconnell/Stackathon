@@ -4,6 +4,20 @@ const store = new Store();
 const main = document.getElementById("main");
 
 function draw() {
+const post = {
+  title: "Why am i here?",
+  content: "i am here because i want to have a great life and career i am here because i want to have a great life and career i am here because i want to have a great life and career i am here because i want to have a great life and career",
+  category:{
+    name: "Javascript"
+  },
+  comments: [
+    timestamp = "August 24 12:00",
+    postId = "post id",
+    userId = "users name",
+    content = "Here is the comment",
+   ],
+}
+
   main.innerHTML = `
     <section class='post container'>
       <header class='post-header flex'>
