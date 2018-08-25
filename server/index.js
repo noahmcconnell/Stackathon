@@ -17,7 +17,7 @@ let userRoutes = require('./routes/users');
 let favRoutes = require('./models/favorite-post');
 let postRoutes = require('./routes/posts');
 let answerRoutes = require('./routes/answers');
-let commentRoutes = require('./routes/posts');
+let commentRoutes = require('./routes/comments');
 let categoryRoutes = require('./routes/categories')
 server.use('/auth', userRoutes);
 server.use('/api/favorite-posts', favRoutes);
