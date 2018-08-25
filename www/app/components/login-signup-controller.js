@@ -1,12 +1,17 @@
-import Store from "../../store/store.js";
+import Store from '../store/store.js';
 const store = new Store();
 
-const app = document.getElementById("app");
+const app = document.getElementById('app');
 
-function draw() {
+function draw(isLogin = true) {
+  if (store.state.user.username) {
+    return;
+  }
   app.innerHTML = `
   <section class="login-signup container">
-    <form>
+    <form onclick='app.controllers.loginSignup.${
+      isLogin ? 'login' : 'signup'
+    }()'>
       <div class="input-field theme fw-500">
         <input id="username" type="text" class="validate">
         <label for="username">Username</label>
@@ -16,17 +21,21 @@ function draw() {
         <label for="password">Password</label>
         <small class="show">show</small>
       </div>
-      <button class="btn btn-theme waves-effect waves-light" type="submit">Login</button>
+      <button class="btn btn-theme waves-effect waves-light" type="submit">${
+        isLogin ? 'Login' : 'Signup'
+      }</button>
     </form>
   </section>
   `;
 }
 
-export default class Controller {
+export default class LoginSignupController {
   constructor() {}
-  drawLogin(){
-    
-  }
 
-  drawSignUp(){}
+  drawLogin() {
+    draw(true);
+  }
+  drawSignUp() {
+    draw(false);
+  }
 }
