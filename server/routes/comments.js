@@ -23,7 +23,7 @@ router.post('/', (req, res, next) =>
 
 router.put('/:id', (req, res, next) =>
   Collection.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => res.send({ message: 'Successfully updated item.' }))
+    .then(() => res.send({ message: 'Successfully updated comment.' }))
     .catch(next)
 );
 

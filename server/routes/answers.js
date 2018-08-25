@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Collection = require('../models/answer')
 
-router.get('/by-user/:userId', (req, res, next) =>
+router.get('/post/:userId', (req, res, next) =>
   Collection.find({
       userId: req.params.userId
   })

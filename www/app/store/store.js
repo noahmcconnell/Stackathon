@@ -18,8 +18,8 @@ function setState(prop, data){
 }
 
 export default class Store {
-    getPost(draw){
-        fetch('/api/post/by-user/'+ state.user._id)
+    getPost(_id){
+        fetch('/api/post/by-id/'+ state.user._id)
         .then(res=> res.json())
         .then(data=>{
             setState('post',data.map(post=> new Post(post)))
