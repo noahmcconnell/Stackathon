@@ -1,10 +1,10 @@
 import Store from '../store/store.js';
 const store = new Store();
 
-const main = document.getElementById('main');
+const main = () => document.getElementById('main');
 
 function draw() {
-  main.innerHTML = `
+  main().innerHTML = `
     <section class='homepage'>
       <div class='row'>
         <div class='col s3 flex flex-column p-3 grey lighten-5 categories'>
