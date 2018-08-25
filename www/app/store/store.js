@@ -89,6 +89,12 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
+  getPosts() {
+    return fetch("/api/posts")
+      .then(res => res.json())
+      .catch(error => console.error(error));  
+  }
+
   //dis dat SINGLETON
 
   constructor() {
