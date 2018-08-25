@@ -1,4 +1,4 @@
-export default class Answer {
+export default class FavoritePost {
     constructor(data) {
       this._id = data._id
       this.goalId = data.goalId
