@@ -1,41 +1,42 @@
 const router = require('express').Router();
-const Collection = require('../models/post-comment');
+const PostComments = require('../models/post-comment');
+const AnswerComments = require('../models/answer-comment');
 
 router.get('/by-post/:postId', (req, res, next) =>
-  Collection.find({
+  PostComments.find({
     postId: req.params.postId
   })
     .then(comments => res.send(comments))
     .catch(next)
 );
 router.get('/by-answer/:answerId', (req, res, next) =>
-  Collection.find({
+  AnswerComments.find({
     answerId: req.params.answerId
   })
     .then(comments => res.send(comments))
     .catch(next)
 );
 
-router.get('/:id', (req, res, next) =>
-  Collection.findById(req.params.id)
+router.get('/post/:id', (req, res, next) =>
+  PostComments.findById(req.params.id)
     .then(item => res.send(item))
     .catch(next)
 );
 
-router.post('/', (req, res, next) =>
-  Collection.create(req.body)
+router.post('/post', (req, res, next) =>
+  PostComments.create(req.body)
     .then(item => res.send(item))
     .catch(next)
 );
 
-router.put('/:id', (req, res, next) =>
-  Collection.findByIdAndUpdate(req.params.id, req.body)
+router.put('/post/:id', (req, res, next) =>
+  PostComments.findByIdAndUpdate(req.params.id, req.body)
     .then(() => res.send({ message: 'Successfully updated comment.' }))
     .catch(next)
 );
 
-router.delete('/:id', (req, res, next) =>
-  Collection.findByIdAndRemove(req.params.id)
+router.delete('/post/:id', (req, res, next) =>
+  PostComments.findByIdAndRemove(req.params.id)
     .then(() => res.send({ message: 'Successfully deleted item.' }))
     .catch(next)
 );
