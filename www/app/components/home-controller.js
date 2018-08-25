@@ -74,7 +74,7 @@ function draw() {
           </div>
         </div>
       </div>
-      <div class='fixed-action-btn'>
+      <div class='fixed-action-btn' onclick='app.controllers.newPost.draw()'>
         <button class='btn-floating btn-large blue'>
           <i class='large material-icons'>add</i>
         </button>

@@ -1,10 +1,10 @@
-import Store from '../store/store.js';
+import Store from "../store/store.js";
 const store = new Store();
 
-const main = document.getElementById('main-content');
+const main = () => document.getElementById("main-content");
 
 function draw() {
-  main.innerHTML = `
+  main().innerHTML = `
   <section class='create-post flex flex-column'>
     <form onsubmit='app.controllers.fill.meIn()'>
       <!-- Fill in onsubmit -->
