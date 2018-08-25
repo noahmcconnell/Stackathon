@@ -1,22 +1,19 @@
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema
-let ObjectId = Schema.Types.ObjectId
-let schemaName = 'Vote'
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-let schema = new Schema({
-    user: {
-        type: ObjectId,
-        required: true
-    },
-    post: {
-        type: ObjectId,
-        required: true,
-        
+const schema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    required: true
+  },
+  post: {
+    type: Schema.Types.ObjectId,
+    required: true
+  },
+  direction: {
+    type: Boolean,
+    required: true
+  }
+});
 
-    },
-    direction: {
-        type: 0,
-        required: true
-    }
-})
-module.exports = mongoose.model(schemaName,schema)
+module.exports = mongoose.model('Vote', schema);
