@@ -1,29 +1,18 @@
-const router = require('express').Router()
-const Collection = require('../models/answer')
+const router = require('express').Router();
+const Collection = require('../models/answer');
 
-router.get('/by-user/:userId', (req, res, next) =>
+router.get('/:userId/:postId', (req, res, next) =>
   Collection.find({
-      userId: req.params.userId
+    userId: req.params.userId,
+    postId: req.params.postId
   })
     .then(userId => res.send(userId))
-    .catch(next)
-);
-
-router.get('/:id', (req, res, next) =>
-  Collection.findById(req.params.id)
-    .then(item => res.send(item))
-    .catch(next)
+    .catch(() => res.send({}))
 );
 
 router.post('/', (req, res, next) =>
   Collection.create(req.body)
     .then(item => res.send(item))
-    .catch(next)
-);
-
-router.put('/:id', (req, res, next) =>
-  Collection.findByIdAndUpdate(req.params.id, req.body)
-    .then(() => res.send({ message: 'Successfully updated item.' }))
     .catch(next)
 );
 

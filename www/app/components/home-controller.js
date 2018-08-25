@@ -4,32 +4,18 @@ const store = new Store();
 const main = () => document.getElementById('main-content');
 
 async function draw() {
-  // const categories = await store.state.getCategories();
+  const categories = (await store.getCategories())
+    .map(
+      category =>
+        `<button class='btn-flat' onclick=''>${category.name}</button>`
+    )
+    .join();
   main().innerHTML = `
     <section class='homepage'>
       <div class='row'>
         <div class='col s3 flex flex-column p-3 grey lighten-5 categories'>
           <h5 align='center'>Categories</h5>
-          <button class="btn-flat" onclick=''>Angular</button>
-          <button class="btn-flat" onclick=''>Bootstrap</button>
-          <button class="btn-flat" onclick=''>Cards</button>
-          <button class="btn-flat" onclick=''>Classes</button>
-          <button class="btn-flat" onclick=''>Command Line</button>
-          <button class="btn-flat" onclick=''>CSS</button>
-          <button class="btn-flat" onclick=''>Flexbox</button>
-          <button class="btn-flat" onclick=''>Forms</button>
-          <button class="btn-flat" onclick=''>HTML5</button>
-          <button class="btn-flat" onclick=''>Inputs</button>
-          <button class="btn-flat" onclick=''>JavaScript</button>
-          <button class="btn-flat" onclick=''>Memes</button>
-          <button class="btn-flat" onclick=''>Node.js</button>
-          <button class="btn-flat" onclick=''>Pillars</button>
-          <button class="btn-flat" onclick=''>React</button>
-          <button class="btn-flat" onclick=''>Redux</button>
-          <button class="btn-flat" onclick=''>Scrum</button>
-          <button class="btn-flat" onclick=''>Syntax</button>
-          <button class="btn-flat" onclick=''>Tables</button>
-          <button class="btn-flat" onclick=''>Vue</button>
+          ${categories}
         </div>
         <div class='col s9 flex flex-wrap'>
           <h1 class='title mt-1'>Questions</h1>
