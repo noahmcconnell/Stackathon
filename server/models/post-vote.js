@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const schema = new Schema({
-    user: {
+    userId: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
       },
-      post: {
+      postId: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'Post'
       },
       direction: {
         type: Boolean,
@@ -16,4 +18,4 @@ const schema = new Schema({
       }
 });
 
-module.exports = mongoose.model('postVote', schema);
+module.exports = mongoose.model('PostVote', schema);

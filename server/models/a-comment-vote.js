@@ -2,13 +2,15 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const schema = new Schema({
-    user: {
+    userId: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
       },
-      post: {
+      postId: {
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'Post'
       },
       direction: {
         type: Boolean,
