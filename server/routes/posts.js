@@ -29,8 +29,9 @@ router.get('/:id', (req, res, next) =>
             userId: item.userId,
             timestamp: item.timestamp,
             categoryId: item.categoryId,
-            correctAnswerId: item.correctAnswerId
-          }, voteCount: count });
+            correctAnswerId: item.correctAnswerId,
+            voteCount: count
+          });
         })
         .catch(next);
     })
