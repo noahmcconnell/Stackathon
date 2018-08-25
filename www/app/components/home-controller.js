@@ -3,7 +3,8 @@ const store = new Store();
 
 const main = () => document.getElementById('main-content');
 
-function draw() {
+async function draw() {
+  // const categories = await store.state.getCategories();
   main().innerHTML = `
     <section class='homepage'>
       <div class='row'>

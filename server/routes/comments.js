@@ -21,7 +21,8 @@ router.get('/by-post/:postId', (req, res, next) =>
           const count = await PostCommentVote.find({
             postCommentId: comment._id
           });
-          return { ...comment, voteCount: count };
+          comment._doc.voteCount = count;
+          return comment;
         })
       )
         .then(comments => {
@@ -48,7 +49,8 @@ router.get('/by-answer/:answerId', (req, res, next) =>
           const count = await AnswerCommentVote.find({
             answerCommentId: comment._id
           });
-          return { ...comment, voteCount: count };
+          comment._doc.voteCount = count;
+          return comment;
         })
       )
         .then(comments => {

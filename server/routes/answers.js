@@ -22,7 +22,8 @@ router.get('/by-post/:postId', (req, res, next) =>
                 (total, vote) => total + (vote.direction ? 1 : -1),
                 0
               );
-              return { ...item, voteCount: count };
+              item._doc.voteCount = count;
+              return item;
             })
             .catch(next);
         })
