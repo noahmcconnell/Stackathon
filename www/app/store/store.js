@@ -5,11 +5,15 @@ import Comment from "../models/comment.js";
 
 
 let store;
+let answers = []
+let postComments = []
+let answerComments = []
 
 let state = {
   user: {},
   currentPost: {}
 };
+
 function setState(prop, data) {
   state[prop] = data;
   console.log(state);
@@ -21,11 +25,22 @@ export default class Store {
       .then(res => res.json())
       .then(data => {
         setState("post", data.map(post => new Post(post)));
+
+
         //get all comments
         //get all answers
         //<--- in
         //get method to get all comments for each answer
       });
+  }
+
+  getAnswer(id) {
+    return fetch("/api/answer/by-id/" + id)
+        .then(res => res.json())
+        .then(data => {
+            setState("answer", data.map(answer => new Answer(answer)));
+            return fetch("/api/comment/by-id" + id)
+        })
   }
 
   login(creds) {
@@ -38,8 +53,9 @@ export default class Store {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.error) return data;
+        if (data.error) return data.error;
         setState("user", new User(data));
+        return
       })
       .catch(error => console.error(error));
   }
