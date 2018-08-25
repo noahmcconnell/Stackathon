@@ -3,9 +3,6 @@ import Post from '../models/post.js';
 import Answer from '../models/answer.js';
 import Comment from '../models/comment.js';
 
-let newAnswer = new Answer();
-let newComment = new Comment();
-
 let store;
 let answers = [];
 let postComments = [];
@@ -13,7 +10,8 @@ let answerComments = [];
 
 let state = {
   user: {},
-  currentPost: {}
+  currentPost: {},
+  answers: []
 };
 
 function setState(prop, data) {
