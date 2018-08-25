@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Collection = require('../models/post');
-const Vote = require('../models/vote');
+const Votes = require('../models/post-vote');
 
 router.get('/by-user/:userId', (req, res, next) =>
   Collection.find({
@@ -11,10 +11,21 @@ router.get('/by-user/:userId', (req, res, next) =>
 );
 
 router.get('/:id', (req, res, next) =>
-  Collection.findById(req.params.id).populate({ path: 'userId', select: "username -_id" })
+  Collection.findById(req.params.id)
+    .populate({ path: 'userId', select: 'username -_id' })
     .exec((err, item) => {
-      if (err) { return next(err) }
-      res.send(item)
+      if (err) {
+        return next(err);
+      }
+      Votes.find({ postId: id })
+        .then(votes => {
+          count = votes.reduce(
+            (total, vote) => total + (vote.direction ? 1 : -1),
+            0
+          );
+          res.send({ ...item, voteCount: count });
+        })
+        .catch(next);
     })
 );
 
