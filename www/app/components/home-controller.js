@@ -7,11 +7,13 @@ async function draw(category = '') {
   const categories = (await store.getCategories())
     .map(
       category =>
-        `<button class='btn-flat' onclick=''>${category.name}</button>`
+        `<button class='btn-flat' onclick='app.controllers.home.draw("${
+          category._id
+        }")'>${category.name}</button>`
     )
     .join('');
 
-  const questions = (await store.getPosts(''))
+  const questions = (await store.getPosts(category))
     .map(
       question => `
       <div class="card grey lighten-3 question-card" onclick=''>
@@ -53,10 +55,10 @@ export default class HomeController {
   constructor() {
     this.draw();
   }
-  draw() {
+  draw(categoryId) {
     if (app && app.controllers) {
       app.controllers.headerFooter.draw();
     }
-    draw();
+    draw(categoryId);
   }
 }
