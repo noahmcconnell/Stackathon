@@ -41,16 +41,16 @@ export default class LoginSignupController {
   async login(event) {
     event.preventDefault();
     try {
-      await store.login({
+      const error = await store.login({
         username: event.target.username.value,
         password: event.target.password.value
       });
-      //if (store.state.user.username) {
+      if (error) {
+        app.toastMessage(error);
+      }
       app.controllers.home.draw();
     } catch (error) {
-      //} else {
-      app.toastMessage('Unable to login');
-      //}
+      app.toastMessage(error.message);
     }
   }
 }
