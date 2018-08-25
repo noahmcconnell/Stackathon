@@ -1,7 +1,7 @@
-import Store from '../store/store.js';
+import Store from "../store/store.js";
 const store = new Store();
 
-const main = document.getElementById('main');
+const main = document.getElementById("main");
 
 function draw() {
   main.innerHTML = `
@@ -44,4 +44,8 @@ function draw() {
 
 export default class PostController {
   constructor() {}
+  async draw(id) {
+    await state.store.getPost(id);
+    draw();
+  }
 }
