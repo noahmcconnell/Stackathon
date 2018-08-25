@@ -37,36 +37,23 @@
         </div>
       </form>
       <div class='buttons' id='login-buttons'>
-        <button class='btn btn-white' onclick=''>Login</button>
-        <button class='btn-flat' onclick=''>Sign Up</button>
+        <button class='btn btn-white waves-effect waves-dark' onclick=''>Login</button>
+        <button class='btn-flat waves-effect waves-light' onclick=''>Sign Up</button>
       </div>
     </header>
     <main id='main-content'>
-      <section class='post container'>
-        <header class='post-header flex'>
-          <h3 class='title'>Overlap columns in bootstrap 4</h3>
-          <div class='upvote-downvote'>
-            <i class='material-icons'>thumb_up_alt</i>
-            <span>0</span>
-            <i class='material-icons'>thumb_down_alt</i>
+      <section class="login-signup container">
+        <form>
+          <div class="input-field theme">
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
           </div>
-        </header>
-        <article class='article'>
-          <a href='#'>https://atom.io/packages/data-atom</a>
-          <p>I have a MySQL connection through SSH that I have configured on Sequel Pro but like the idea of using this Atom
-            package, data-atom, instead. My issue is that I cannot seem to figure out the js behind it to determine if it
-            supports an SSH connection and if so how I can accomplish it with the configuration.</p>
-          <button class='btn-flat'>edit <i class='material-icons'>edit</i></button>
-          <div class='comments flex flex-column'>
-              <article class="comment flex">
-                  <i class='material-icons'>thumb_up_alt</i>
-                  <span>0</span>
-                  <i class='material-icons'>thumb_down_alt</i>
-                  <p>You will notice that the basic controllers and html structure has been setup for you. You will be responsible to connect each of the controllers to their appropiate service. Every Service is a class so be sure to invoke the service inside the controller and save it to a variable in the controller to gain access to the needed methods. Take a look at the weather controller for an example of newing up the services. Also don't forget to instantiate your controllers and add them to the app object.<span class="user-info">– Username 3 hrs ago</p>
-              </article>
+          <div class="input-field theme">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+            <small>show</small>
           </div>
-        </article>
-        <article class='answer'></article>
+        </form>
       </section>
     </main>
     <footer class='page-footer blue'>
@@ -94,10 +81,8 @@
       </div>
     </footer>
     </article>
-
-
-
-    <script src="assets/js/materialize.min.js"></script>
+  </div>
+  <script src="assets/js/materialize.min.js"></script>
 </body>
 
 
