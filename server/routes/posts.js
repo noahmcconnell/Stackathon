@@ -56,7 +56,7 @@ router.get('/by-user/:userId', (req, res, next) =>
 
 router.get('/:id', (req, res, next) =>
   Collection.findById(req.params.id)
-    .populate({ path: 'userId', select: 'username -_id' })
+    .populate({ path: 'userId', select: 'username' })
     .exec((err, item) => {
       if (err) {
         return next(err);

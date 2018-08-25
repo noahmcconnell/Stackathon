@@ -16,7 +16,9 @@ async function draw(category = '') {
   const questions = (await store.getPosts(category))
     .map(
       question => `
-      <div class="card grey lighten-3 question-card" onclick=''>
+      <div class="card grey lighten-3 question-card" onclick='app.controllers.post.draw("${
+        question._id
+      }")'>
         <div class="card-content black-text flex flex-column">
           <p class="title">${question.title}</p>
           <div class="flex stats">
