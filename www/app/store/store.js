@@ -1,15 +1,15 @@
-import User from "../models/user.js";
-import Post from "../models/post.js";
-import Answer from "../models/answer.js";
-import Comment from "../models/comment.js";
+import User from '../models/user.js';
+import Post from '../models/post.js';
+import Answer from '../models/answer.js';
+import Comment from '../models/comment.js';
 
-let newAnswer = new Answer
-let newComment = new Comment
+let newAnswer = new Answer();
+let newComment = new Comment();
 
 let store;
-let answers = []
-let postComments = []
-let answerComments = []
+let answers = [];
+let postComments = [];
+let answerComments = [];
 
 let state = {
   user: {},
@@ -23,16 +23,15 @@ function setState(prop, data) {
 
 export default class Store {
   getPost(id) {
-    return fetch("/api/post/by-id/" + id)
+    return fetch('/api/post/by-id/' + id)
       .then(res => res.json())
       .then(data => {
-        setState("post", data.map(post => new Post(post)));
+        setState('post', data.map(post => new Post(post)));
         // newComment.get('') {
-            return fetch("/api/comment/by-id/" + id)
-                .then(res => res.json())
-                .then(data => {
-                
-        }
+        // return fetch("/api/comment/by-id/" + id)
+        // .then(res => res.json())
+        // .then(data => {
+        // }
         //     .then((res) => {
         //         postComments = (res.data.data)
         //         return
@@ -46,32 +45,32 @@ export default class Store {
   }
 
   getAnswer(id) {
-    return fetch("/api/answer/by-id/" + id)
+    return fetch('/api/answer/by-id/' + id)
       .then(res => res.json())
       .then(data => {
-            setState("answer", data.map(answer => new Answer(answer)));
-            // Comment.get('')
-            // .then((res) => {
-                // answerComments = (res.data.data)
-                // return
-            // }
+        setState('answer', data.map(answer => new Answer(answer)));
+        // Comment.get('')
+        // .then((res) => {
+        // answerComments = (res.data.data)
+        // return
+        // }
         // )
-        })
+      });
   }
 
   login(creds) {
-    return fetch("/auth/login", {
-      method: "post",
+    return fetch('/auth/login', {
+      method: 'post',
       body: JSON.stringify(creds),
       headers: {
-        "Content-Type": "application/json; charset=utf-8"
+        'Content-Type': 'application/json; charset=utf-8'
       }
     })
       .then(res => res.json())
       .then(data => {
         if (data.error) return data.error;
-        setState("user", new User(data));
-        return
+        setState('user', new User(data));
+        return;
       })
       .catch(error => console.error(error));
   }
