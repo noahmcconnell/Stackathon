@@ -5,7 +5,7 @@ const app = document.getElementById('app');
 
 function draw(isLoggedIn) {
   app.innerHTML = `
-    <header class='page-header z-depth-1'>
+    <header class='page-header z-depth-1' id='main-header'>
       <div class='icon' onclick='app.controllers.home.draw()'>
         <svg class='logo-star' xmlns="http://www.w3.org/2000/svg" viewBox="0.14284682273864746 0 67.07624816894531 64.76274871826172"
           x="0px" y="0px" width="67.07624816894531" height="64.76274871826172"><g fill-rule="evenodd" transform="translate(-1)">
@@ -39,7 +39,7 @@ function draw(isLoggedIn) {
     </header>
     <main id='main-content'>
     </main>
-    <footer class='page-footer blue'>
+    <footer class='page-footer blue' id='main-footer'>
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Did you know</h5>
@@ -69,8 +69,16 @@ function draw(isLoggedIn) {
 export default class HeaderFooterController {
   constructor() {
     this.draw();
+    this.lastLoginState = store.state.user.username !== '';
   }
   draw() {
-    draw(store.state.user.username !== '');
+    const isLoggedIn = store.state.user.username !== '';
+    if (
+      isLoggedIn === this.lastLoginState &&
+      document.getElementById('main-header')
+    ) {
+      return;
+    }
+    draw();
   }
 }
