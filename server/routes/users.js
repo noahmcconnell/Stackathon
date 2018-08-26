@@ -21,7 +21,7 @@ router.post('/login', (req, res, next) =>
     password: req.body.password
   }).then(user => {
     if (user) {
-      return res.send(user);
+      return res.send({ username: user.username, _id: user._id });
     }
     return res.status(401).send({
       error: 'Invaild login'
@@ -32,7 +32,7 @@ router.post('/login', (req, res, next) =>
 router.post('/register', (req, res, next) => {
   Collection.create(req.body)
     .then(user => {
-      res.send(user);
+      res.send({ username: user.username, _id: user._id });
     })
     .catch(next);
 });
