@@ -80,11 +80,11 @@ router.post('/', (req, res, next) =>
     .catch(next)
 );
 
-router.put('/:id', (req, res, next) =>
-  Votes.findByIdAndUpdate(req.params.id, req.body)
-    .then(item => res.send(item))
-    .catch(next)
-);
+// router.put('/:id', (req, res, next) =>
+//   Votes.findByIdAndUpdate(req.params.id, req.body)
+//     .then(item => res.send(item))
+//     .catch(next)
+// );
 
 router.put('/:id', (req, res, next) =>
   Collection.findByIdAndUpdate(req.params.id, req.body)
