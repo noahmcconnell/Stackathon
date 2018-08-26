@@ -18,15 +18,6 @@ function setState(prop, data) {
   console.log(state);
 }
 
-const postJSON = (url, json) =>
-  fetch(url, {
-    method: 'post',
-    body: JSON.stringify(json),
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8'
-    }
-  });
-
 export default class Store {
   getPost(id) {
     return fetch('/api/posts/' + id)
@@ -100,7 +91,7 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
-  getCategories(cate) {
+  getCategories() {
     return fetch('/api/categories')
       .then(res => res.json())
       .catch(error => console.error(error));
@@ -112,8 +103,26 @@ export default class Store {
         .then(res => res.json())
         .catch(error => console.error(error));
     }
-    return fetch('api/posts')
+    return fetch('/api/posts')
       .then(res => res.json())
+      .catch(error => console.error(error));
+  }
+
+  createPost(postData) {
+    return fetch('/api/posts', {
+      method: 'post',
+      body: JSON.stringify(postData),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        setState(
+          'post',
+          new Post({ ...postData, timestamp: data.timestamp, _id: data._id })
+        );
+      })
       .catch(error => console.error(error));
   }
 

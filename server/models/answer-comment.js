@@ -12,8 +12,9 @@ const schema = new Schema({
     ref: 'User'
   },
   timestamp: {
-    type: Date,
-    required: true
+    type: Number,
+    required: true,
+    default: Date.now
   },
   answerId: {
     type: Schema.Types.ObjectId,

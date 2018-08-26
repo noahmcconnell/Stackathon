@@ -22,12 +22,12 @@ const schema = new Schema({
   },
   categoryId: {
     type: Schema.Types.ObjectId,
-    required: Schema.Types.ObjectId,
+    required: true,
     ref: 'Category'
   },
   correctAnswerId: {
     type: Schema.Types.ObjectId,
-    ref: 'CorrectAnswer',
+    ref: 'Answer',
     required: false
   }
 });

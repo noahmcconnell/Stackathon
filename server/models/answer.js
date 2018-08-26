@@ -12,8 +12,9 @@ const schema = new Schema({
     ref: 'User'
   },
   timestamp: {
-    type: String,
-    require: true
+    type: Number,
+    required: true,
+    default: Date.now
   },
   postId: {
     type: Schema.Types.ObjectId,

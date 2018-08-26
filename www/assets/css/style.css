@@ -6,8 +6,8 @@
 body {
   margin: 0;
   padding-top: 4.5rem;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #app {
@@ -272,7 +272,7 @@ body {
   font-weight: 500;
 }
 
-textarea[resize="false"] {
+textarea[resize='false'] {
   resize: none;
 }
 
@@ -364,9 +364,42 @@ textarea[resize="false"] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   pointer-events: none;
+}
+
+.select {
+  position: relative;
+}
+.select label {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  background-color: white;
+  left: 0.75rem;
+  padding: 0 0.5rem;
+}
+.select select {
+  display: block;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.select svg {
+  fill: #90a1b5;
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  width: 2rem;
+  transform: rotate(180deg);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+.select select:focus ~ svg {
+  transform: rotate(90deg);
 }

@@ -76,7 +76,7 @@ router.get('/:id', (req, res, next) =>
 
 router.post('/', (req, res, next) =>
   Collection.create(req.body)
-    .then(item => res.send(item))
+    .then(item => res.send({ _id: item._id, timestamp: item.timestamp }))
     .catch(next)
 );
 

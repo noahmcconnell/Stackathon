@@ -1,7 +1,7 @@
-import Store from "../store/store.js";
+import Store from '../store/store.js';
 const store = new Store();
 
-const app = document.getElementById("app");
+const app = document.getElementById('app');
 
 function draw(isLoggedIn) {
   app.innerHTML = `
@@ -28,8 +28,13 @@ function draw(isLoggedIn) {
         </div>
       </form>
       <div class='buttons' id='login-buttons'>
-        <button class='btn btn-white waves-effect waves-dark' onclick='app.controllers.loginSignup.drawLogin()'>Login</button>
-        <button class='btn-flat waves-effect waves-light' onclick='app.controllers.loginSignup.drawSignup()'>Sign Up</button>
+        ${
+          store.state.user.username
+            ? ''
+            : `
+          <button class='btn btn-white waves-effect waves-dark' onclick='app.controllers.loginSignup.drawLogin()'>Login</button>
+          <button class='btn-flat waves-effect waves-light' onclick='app.controllers.loginSignup.drawSignup()'>Sign Up</button>`
+        }
       </div>
     </header>
     <main id='main-content'>
@@ -66,6 +71,6 @@ export default class HeaderFooterController {
     this.draw();
   }
   draw() {
-    draw(store.state.user.username !== "");
+    draw(store.state.user.username !== '');
   }
 }
