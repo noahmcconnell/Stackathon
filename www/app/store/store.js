@@ -132,7 +132,13 @@ export default class Store {
       .then(data => {
         setState(
           'post',
-          new Post({ ...postData, timestamp: data.timestamp, _id: data._id })
+          new Post({
+            ...postData,
+            timestamp: data.timestamp,
+            _id: data._id,
+            comments: [],
+            voteCount: 0
+          })
         );
       })
       .catch(error => console.error(error));
@@ -178,6 +184,7 @@ export default class Store {
       })
     })
       .then(res => res.json())
+      .then(commentData => new PostComment({ ...commentData, voteCount: 0 }))
       .catch(error => console.error(error));
   }
   createAnswerComment(content) {
@@ -193,6 +200,7 @@ export default class Store {
       })
     })
       .then(res => res.json())
+      .then(commentData => new AnswerComment({ ...commentData, voteCount: 0 }))
       .catch(error => console.error(error));
   }
 
