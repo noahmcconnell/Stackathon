@@ -3,17 +3,19 @@ const store = new Store();
 
 const main = () => document.getElementById('main-content');
 
-async function draw(category = '') {
+async function draw(questions) {
   const categories = (await store.getCategories())
     .map(
-      category =>
-        `<button class='btn-flat' onclick='app.controllers.home.draw("${
-          category._id
-        }")'>${category.name}</button>`
+      categoryObj =>
+        `<button class='btn-flat ${
+          store.state.categoryId === categoryObj._id ? 'active' : ''
+        }' onclick='app.controllers.home.filterByCategory("${
+          categoryObj._id
+        }")'>${categoryObj.name}</button>`
     )
     .join('');
 
-  const questions = (await store.getPosts(category))
+  questions = questions
     .map(
       question => `
       <div class="card grey lighten-3 question-card" onclick='app.controllers.post.draw("${
@@ -37,6 +39,9 @@ async function draw(category = '') {
       <div class='row'>
         <div class='col s3 flex flex-column p-3 grey lighten-5 categories'>
           <h5 align='center'>Categories</h5>
+          <button class='btn-flat ${
+            !store.state.categoryId ? 'active' : ''
+          }' onclick='app.controllers.home.filterByCategory()'>Any</button>
           ${categories}
         </div>
         <div class='col s9 flex flex-wrap'>
@@ -57,10 +62,34 @@ export default class HomeController {
   constructor() {
     this.draw();
   }
-  draw(categoryId) {
+  async draw() {
     if (app && app.controllers) {
       app.controllers.headerFooter.draw();
     }
-    draw(categoryId);
+
+    let questions;
+    if (store.state.categoryId) {
+      questions = await store.getPostsByCategory(store.state.categoryId);
+    } else {
+      questions = await store.getPosts();
+    }
+
+    if (store.state.search) {
+      questions = new Fuse(questions, { keys: ['title'] }).search(
+        store.state.search
+      );
+    }
+
+    draw(questions);
+  }
+
+  filterByTitle(title) {
+    store.saveSearch(title);
+    this.draw();
+  }
+
+  filterByCategory(categoryId) {
+    store.saveCategoryId(categoryId);
+    this.draw();
   }
 }

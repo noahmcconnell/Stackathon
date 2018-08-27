@@ -18,11 +18,10 @@ function draw(isLoggedIn) {
             transform="rotate(0 72.10499846935272 21.255000114440918)"></path>
         </svg>
       </div>
-      <form onsubmit='app.controllers.fill.meIn(event)'>
-        <!-- onsubmit needs a controller method -->
+      <form onsubmit='app.controllers.home.filterByTitle(event.target.search.value)'>
         <div class="search-bar">
           <div class="input-field white">
-            <input id="search" type="text">
+            <input id="search" type="text" name='search'>
             <label for="search">Search</label>
           </div>
         </div>

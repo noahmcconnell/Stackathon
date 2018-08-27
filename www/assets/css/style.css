@@ -253,6 +253,14 @@ body {
   min-height: calc(100vh - 4.5rem) !important;
   height: 100%;
 }
+.categories button {
+  margin-bottom: 0.5rem;
+}
+.categories button.active {
+  /* background-color: rgba(0,0,0,0.1); */
+  background-color: var(--theme-color);
+  color: white;
+}
 
 .row {
   margin: unset !important;

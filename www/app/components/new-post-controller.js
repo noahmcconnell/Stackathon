@@ -43,16 +43,17 @@ export default class NewPostController {
     app.controllers.headerFooter.draw();
     draw();
   }
-  createNewPost(event) {
+  async createNewPost(event) {
     event.preventDefault();
     if (!store.state.user.username) {
       return app.toastMessage('You must be logged in to create a post.');
     }
-    store.createPost({
+    await store.createPost({
       title: event.target.title.value,
       content: event.target.content.value,
       categoryId: event.target.category.value,
       userId: store.state.user._id
     });
+    app.controllers.post.draw();
   }
 }

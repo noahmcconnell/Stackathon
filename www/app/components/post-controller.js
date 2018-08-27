@@ -79,7 +79,9 @@ export default class PostController {
   constructor() {}
   async draw(id) {
     app.controllers.headerFooter.draw();
-    await store.getPost(id);
+    if (id) {
+      await store.getPost(id);
+    }
     draw();
   }
 }

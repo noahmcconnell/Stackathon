@@ -10,7 +10,9 @@ let store;
 let state = {
   user: {},
   post: {},
-  answers: []
+  answers: [],
+  search: '',
+  categoryId: ''
 };
 
 function setState(prop, data) {
@@ -97,13 +99,14 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
-  getPosts(categoryId) {
-    if (categoryId) {
-      return fetch('/api/posts/category/' + categoryId)
-        .then(res => res.json())
-        .catch(error => console.error(error));
-    }
+  getPosts() {
     return fetch('/api/posts')
+      .then(res => res.json())
+      .catch(error => console.error(error));
+  }
+
+  getPostsByCategory(categoryId) {
+    return fetch('/api/posts/category/' + categoryId)
       .then(res => res.json())
       .catch(error => console.error(error));
   }
@@ -126,7 +129,12 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
-  //voteCount() {}
+  saveSearch(search) {
+    setState('search', search);
+  }
+  saveCategoryId(categoryId) {
+    setState('categoryId', categoryId);
+  }
 
   //dis dat SINGLETON
 
