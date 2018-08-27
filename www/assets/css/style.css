@@ -333,7 +333,7 @@ textarea[resize='false'] {
   color: lightgrey;
   display: table !important;
   position: absolute;
-  left: -3rem;
+  left: -3.5rem;
   top: calc(50% - 1.1rem);
   cursor: pointer;
 }
