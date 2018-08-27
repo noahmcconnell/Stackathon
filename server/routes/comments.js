@@ -18,9 +18,13 @@ router.get('/by-post/:postId', (req, res, next) =>
       }
       Promise.all(
         commentsData.map(async comment => {
-          const count = await PostCommentVote.find({
+          const votes = await PostCommentVote.find({
             postCommentId: comment._id
           });
+          const count = votes.reduce(
+            (total, vote) => total + (vote.direction ? 1 : -1),
+            0
+          );
           comment._doc.voteCount = count;
           return comment;
         })
