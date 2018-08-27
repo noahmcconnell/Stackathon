@@ -14,7 +14,7 @@ server.use(express.static(__dirname + '/../www/'));
 
 //ROUTES
 let userRoutes = require('./routes/users');
-let favRoutes = require('./models/favorite-post');
+let favRoutes = require('./routes/favorite-posts');
 let postRoutes = require('./routes/posts');
 let answerRoutes = require('./routes/answers');
 let commentRoutes = require('./routes/comments');

@@ -12,7 +12,8 @@ let state = {
   post: {},
   answers: [],
   search: '',
-  categoryId: ''
+  categoryId: '',
+  favorite: {}
 };
 
 function setState(prop, data) {
@@ -25,19 +26,27 @@ export default class Store {
     return fetch('/api/posts/' + id)
       .then(res => res.json())
       .then(postData => {
-        return fetch('/api/comments/by-post/' + id)
-          .then(res => res.json())
-          .then(commentsData => {
-            setState(
-              'post',
-              new Post({
-                ...postData,
-                comments: commentsData.map(comment => new PostComment(comment))
-              })
-            );
+        return Promise.all([
+          fetch('/api/comments/by-post/' + id)
+            .then(res => res.json())
+            .then(commentsData => {
+              setState(
+                'post',
+                new Post({
+                  ...postData,
+                  comments: commentsData.map(
+                    comment => new PostComment(comment)
+                  )
+                })
+              );
 
-            return this.getAnswersByPost(id);
-          });
+              return this.getAnswersByPost(id);
+            }),
+          fetch('/api/favorite-posts/' + state.user._id + '/' + id)
+            .then(res => res.json())
+            .then(favorite => setState('favorite', favorite))
+            .catch(error => console.error(error))
+        ]);
       });
   }
 
@@ -129,11 +138,62 @@ export default class Store {
       .catch(error => console.error(error));
   }
 
+  favoritePost() {
+    return fetch('/api/favorite-posts', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({ postId: state.post._id, userId: state.user._id })
+    })
+      .then(res => res.json())
+      .then(favorite => setState('favorite', favorite))
+      .catch(error => console.error(error));
+  }
+  unfavoritePost() {
+    return fetch('/api/favorite-posts/' + state.favorite._id, {
+      method: 'delete'
+    })
+      .then(() => setState('favorite', {}))
+      .catch(error => console.error(error));
+  }
+
   saveSearch(search) {
     setState('search', search);
   }
   saveCategoryId(categoryId) {
     setState('categoryId', categoryId);
+  }
+
+  createPostComment(content) {
+    return fetch('/api/comments/post', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({
+        content,
+        userId: state.user._id,
+        postId: state.post._id
+      })
+    })
+      .then(res => res.json())
+      .catch(error => console.error(error));
+  }
+  createAnswerComment(content) {
+    return fetch('/api/comments/answer', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({
+        content,
+        userId: state.user._id,
+        postId: state.post._id
+      })
+    })
+      .then(res => res.json())
+      .catch(error => console.error(error));
   }
 
   //dis dat SINGLETON
